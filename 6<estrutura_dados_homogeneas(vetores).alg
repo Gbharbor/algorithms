@@ -15,6 +15,7 @@ fimalgoritmo
 //VETORES USANDO MODO: (Para fimpara)
 //Escreva um algoritmo que declare um vetor do tipo real e leia as notas de 10 alunos.
 algoritmo "score_name"
+var
     n: inteiro
     score : vetor [1..5] de real
     name : vetor [1..5] de caractere
