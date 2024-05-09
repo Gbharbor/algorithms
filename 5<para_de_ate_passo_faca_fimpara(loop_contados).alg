@@ -60,3 +60,15 @@ inicio
         escreval(n)
     fimpara
 fimalgoritmo
+//Algoritmo , utilizando a estrutura de repetuicao para calcular ops 10 primeiuros termos de serie : soma = 1/1 + 1/2 + 1/3 ... + 1/10
+algoritmo "calc10termos"
+var 
+    soma : real 
+    i : inteiro
+inicio
+    soma <- 0
+    para i de 1 ate 10 faca 
+        soma <- soma  + 1/i
+    fimpara
+    escreva("a soma dos 10 primeiros termos é: ",soma)
+fimalgoritmo

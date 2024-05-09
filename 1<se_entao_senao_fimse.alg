@@ -1,6 +1,24 @@
+//Faca um algoritmo que entre como o nome e o valor do cheque do cliente, escreva quanto vai ser recolhido de cpme , considere a taxa de 0,23 
+algoritmo "recolhimentoCPME"
+var
+    nome : caractere
+    valorcheque: real
+    recolhimento: real
+    taxa : real
+inicio 
+    escreva ("nome do cliente: ")
+    leia(nome)
+    escreva("digite o valor do cheque dpo cliente: ")
+    leia(valorcheque)
+
+    //taxa de 0,23
+    escreva("taxa")
+    leia(taxa)
+    recolhimento<- valorcheque * taxa
+    escreva("valor a ser recolhido do CPME é : ", recolhimento)
+fimalgoritmo
+//Maior numero ou igual
 algoritmo "biggernumber_iqual0000"
-// Disciplina  :  [Linguagem e Lógica de Programação]
-// Descrição   : Qual numero e maior ou se sao iguais.
 var
     a : inteiro
     b : inteiro
