@@ -1,4 +1,4 @@
-//Vamos fazer um algoritmo para entrar com os valores a um vetor definido, atribuir a ele valores e somar os valores de seu conteudo.
+
 algoritmo "first_vetor"
 var
     a : inteiro
@@ -14,20 +14,49 @@ inicio
 fimalgoritmo
 //VETORES USANDO MODO: (Para fimpara)
 //Escreva um algoritmo que declare um vetor do tipo real e leia as notas de 10 alunos.
-algoritmo "score_name"
+
+algoritmo "gestao_alunos"
 var
     n: inteiro
-    score : vetor [1..5] de real
-    name : vetor [1..5] de caractere
+    score: vetor [1..5] de real
+    name: vetor [1..5] de caractere
+    aprovados: inteiro
 inicio
+    aprovados := 0
+    
     para n de 1 ate 5 passo 1 faca
         escreval("Nome do Aluno: ")
         leia(name[n])
         escreval("Nota do Aluno: ")
         leia(score[n])
+        
+        se score[n] >= 7.0 entao
+            escreval(name[n], " foi aprovado com nota ", score[n])
+            aprovados := aprovados + 1
+        fimse
     fimpara
-    escreva("Aprovados: ", nome[1]," ",nome[2])
+    
+    escreval("Total de Aprovados: ", aprovados)
 fimalgoritmo
+
+algoritmo "media_dos_alunos"
+var
+    n: inteiro
+    score: vetor [1..5] de real
+    media: real
+inicio
+    media := 0
+    
+    para n de 1 ate 5 passo 1 faca
+        escreval("Nota do Aluno: ")
+        leia(score[n])
+        media := media + score[n]
+    fimpara
+    
+    media := media / 5
+    escreval("A média das notas é: ", media)
+fimalgoritmo
+
 
 //VETORES USANDO MODO: (Repita ate)
 //Algoritmo so para ate que seja inserido um ponto, ou atinja os 10 alunos totais.
