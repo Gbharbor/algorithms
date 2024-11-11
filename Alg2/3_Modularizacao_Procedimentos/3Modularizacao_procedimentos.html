@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 3: Modularização e Procedimentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #0073e6;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #0073e6;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-top: 1.2em;
+            color: #005bb5;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            margin-top: 1em;
+            color: #e74c3c;
+        }
+
+        p, ul, ol, pre, table {
+            margin: 15px 0;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0073e6;
+            color: white;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #0073e6;
+            overflow-x: auto;
+            font-size: 1em;
+        }
+
+        code {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Algoritmos II - 3 Modularização e Procedimentos</h1>
+
+        <h2>1. Conceito de Modularização</h2>
+        <p><strong>O que é Modularização?</strong></p>
+        <ul>
+            <li>Modularização é dividir um programa em <strong>módulos</strong> menores, onde cada um realiza uma tarefa específica.</li>
+            <li>Ajuda a <strong>organizar</strong> e <strong>manter</strong> o programa, evitando um único bloco de código extenso e complexo.</li>
+        </ul>
+        <p><strong>Por que Modularizar?</strong></p>
+        <ol>
+            <li><strong>Facilita a Compreensão:</strong> Programas grandes ficam mais fáceis de entender ao serem divididos em partes menores.</li>
+            <li><strong>Simplifica a Manutenção:</strong> Corrigir ou atualizar um módulo específico evita a necessidade de modificar o programa inteiro.</li>
+            <li><strong>Reutilização de Código:</strong> Módulos bem projetados podem ser usados em outros programas, como um módulo de soma reutilizado em diferentes contextos.</li>
+        </ol>
+
+        <h2>2. Vantagens da Modularização</h2>
+        <ol>
+            <li><strong>Redução da Complexidade:</strong> Modularização divide programas longos em partes menores e específicas, facilitando desenvolvimento e leitura.</li>
+            <li><strong>Facilidade de Manutenção e Correção:</strong> Módulos independentes permitem localizar e corrigir erros com foco em tarefas específicas, sem interferir no restante do programa.</li>
+            <li><strong>Criação de Bibliotecas Reutilizáveis:</strong> Módulos bem projetados podem compor bibliotecas para uso em outros projetos, evitando retrabalho e garantindo consistência.</li>
+        </ol>
+
+        <h2>3. Procedimentos</h2>
+        <p><strong>O que é um Procedimento?</strong></p>
+        <ul>
+            <li>Um <strong>procedimento</strong> é um módulo que realiza uma tarefa específica, como um cálculo ou exibição de mensagem, funcionando de forma independente.</li>
+            <li>Ao ser chamado, executa sua função e devolve o controle para o ponto de chamada no programa.</li>
+        </ul>
+        <p><strong>Estrutura Básica de um Procedimento</strong></p>
+        <ul>
+            <li><strong>Nome do Procedimento:</strong> Identifica o procedimento e permite chamá-lo de outras partes do programa.</li>
+            <li><strong>Variáveis Locais:</strong> Declaradas e usadas apenas dentro do procedimento, isolando a execução.</li>
+            <li><strong>Instruções:</strong> Conjunto de comandos que executam a tarefa do procedimento.</li>
+        </ul>
+
+        <h2>4. Parâmetros</h2>
+        <p><strong>O que são Parâmetros?</strong></p>
+        <ul>
+            <li>Parâmetros são variáveis que permitem a troca de valores entre o procedimento e o programa principal.</li>
+            <li>Tornam o procedimento mais flexível e reutilizável ao passar valores externos para ele.</li>
+        </ul>
+        <p><strong>Tipos de Passagem de Parâmetros</strong></p>
+        <ol>
+            <li><strong>Por Valor:</strong> Envia uma cópia do valor, sem alterar a variável original.</li>
+            <li><strong>Por Referência:</strong> Envia o endereço da variável, permitindo que o procedimento modifique o valor original.</li>
+        </ol>
+
+        <h2>5. Exemplo Prático</h2>
+
+        <h3>Exemplo 1: Procedimento de Soma Sem Parâmetros</h3>
+        <pre><code>
+procedimento SOMA
+var
+    A, B, resultado: inteiro
+inicio
+    leia(A)
+    leia(B)
+    resultado <- A + B
+    escreva("Resultado da soma: ", resultado)
+fim
+        </code></pre>
+
+        <h3>Exemplo 2: Procedimento de Soma Com Parâmetros</h3>
+        <pre><code>
+procedimento SOMA(A: inteiro, B: inteiro)
+var
+    resultado: inteiro
+inicio
+    resultado <- A + B
+    escreva("Resultado da soma: ", resultado)
+fim
+        </code></pre>
+
+        <h3>Comparação entre os Dois Exemplos</h3>
+        <table>
+            <tr>
+                <th>Característica</th>
+                <th>Sem Parâmetros</th>
+                <th>Com Parâmetros</th>
+            </tr>
+            <tr>
+                <td><strong>Flexibilidade</strong></td>
+                <td>Menor, depende de valores lidos</td>
+                <td>Maior, permite uso com diferentes valores</td>
+            </tr>
+            <tr>
+                <td><strong>Reutilização</strong></td>
+                <td>Limitada ao contexto interno</td>
+                <td>Pode ser reutilizado em diversos contextos</td>
+            </tr>
+            <tr>
+                <td><strong>Dependência do Programa</strong></td>
+                <td>Maior, valores definidos no próprio procedimento</td>
+                <td>Menor, recebe valores do programa principal</td>
+            </tr>
+        </table>
+        <p>Esses exemplos demonstram como o uso de parâmetros amplia a versatilidade e a reutilização dos procedimentos em um programa.</p>
+    </div>
+</body>
+</html>
