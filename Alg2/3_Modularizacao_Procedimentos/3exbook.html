@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos de Algoritmos em VisualG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .explanation {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Algoritmos II - Exercicios Modularização e Procedimentos</h1>
+
+<h2>1. Algoritmo II - ex de Registro"</h2>
+<pre>
+algoritmo "Exemplo de Registro"
+tipo Pessoa = registro
+    nome : caractere
+    idade : inteiro
+    altura : real
+    doadorOrgaos : logico
+fimregistro
+
+var
+  cidadao : Pessoa
+
+inicio
+  leia(cidadao.nome)
+  leia(cidadao.idade)
+  leia(cidadao.altura)
+  leia(cidadao.doadorOrgaos)
+
+  escreva("Nome: ", cidadao.nome)
+  escreva("Idade: ", cidadao.idade)
+  escreva("Altura: ", cidadao.altura)
+  escreva("Doador de Órgãos: ", cidadao.doadorOrgaos)
+fimalgoritmo
+</pre>
+<div class="explanation">
+    Este algoritmo cria um registro para armazenar informações sobre uma pessoa, como nome, idade, altura e se é doador de órgãos.
+</div>
+
+<h2>2. Algoritmo "Informações do Produto"</h2>
+<pre>
+algoritmo "Informações do Produto"
+var
+   nomeProduto : caractere
+   precoProduto : real
+   quantidadeEstoque : inteiro
+inicio
+   escreva("Digite o nome do produto: ")
+   leia(nomeProduto)
+   
+   escreva("Digite o preço do produto: ")
+   leia(precoProduto)
+   
+   escreva("Digite a quantidade em estoque: ")
+   leia(quantidadeEstoque)
+
+   escreva("\nInformações do Produto:\n")
+   escreva("Nome do Produto: ", nomeProduto, "\n")
+   escreva("Preço: R$ ", precoProduto, "\n")
+   escreva("Quantidade em Estoque: ", quantidadeEstoque, "\n")
+fimalgoritmo
+</pre>
+<div class="explanation">
+    Este algoritmo lê e exibe informações de um produto, incluindo nome, preço e quantidade em estoque.
+</div>
+
+<h2>3. Algoritmo "Dados do Aluno com Vetor"</h2>
+<pre>
+algoritmo "Dados do Aluno com Vetor"
+tipo Aluno = registro
+    nome : caractere
+fimregistro
+
+var
+   aluno : Aluno
+   notas : vetor[1..4] de real
+   i : inteiro
+inicio
+   escreva("Digite o nome do aluno: ")
+   leia(aluno.nome)
+
+   para i de 1 ate 4 passo 1 faca
+      escreva("Digite a nota do ", i, "º bimestre: ")
+      leia(notas[i])
+   fimpara
+
+   escreva("\nDados do Aluno:\n")
+   escreva("Nome: ", aluno.nome, "\n")
+   escreva("Notas:\n")
+   para i de 1 ate 4 passo 1 faca
+      escreva("Bimestre ", i, ": ", notas[i], "\n")
+   fimpara
+fimalgoritmo
+</pre>
+<div class="explanation">
+    Este algoritmo registra o nome de um aluno e suas notas dos quatro bimestres, exibindo-as ao final.
+</div>
+
+<h2>4. Algoritmo "RegistroPedagios"</h2>
+<pre>
+algoritmo "RegistroPedagios"
+tipo Registro_pedagios = registro
+    nome: caractere
+    quilometro: real
+    cidade: caractere
+    valor: real
+fimregistro
+
+var
+    i: inteiro
+    pedagios: vetor[1..10] de Registro_pedagios
+    valorTotal: real
+
+inicio
+    para i de 1 ate 10 passo 1 faca
+        escreva("Digite o nome da rodovia da praça de pedágio ", i, ": ")
+        leia(pedagios[i].nome)
+        escreva("Digite o quilômetro da rodovia onde fica o pedágio ", i, ": ")
+        leia(pedagios[i].quilometro)            
+        escreva("Digite a cidade onde fica o pedágio ", i, ": ")
+        leia(pedagios[i].cidade)   
+        escreva("Digite o valor do pedágio ", i, ": R$ ")
+        leia(pedagios[i].valor)
+    fimpara
+
+    valorTotal <- 0.0
+    para i de 1 ate 10 passo 1 faca
+        valorTotal <- valorTotal + pedagios[i].valor
+    fimpara
+
+    escreval("O valor total dos pedágios neste trajeto é: R$ ", valorTotal)
+fim
+fimalgoritmo
+</pre>
+<div class="explanation">
+    Este algoritmo registra informações de 10 praças de pedágio e calcula o valor total dos pedágios em um trajeto.
+</div>
+
+<h2>5. Algoritmo "Cadastro_Cidade_Parana"</h2>
+<pre>
+algoritmo "Cadastro_Cidade_Parana"
+tipo Cidade = registro
+    nome: caractere
+    populacao: inteiro
+    densidade_demografica: real
+fimregistro
+
+var
+    cidade : Cidade
+
+inicio
+    escreval("Cadastro de Cidade do Estado do Paraná")
+    
+    escreva("Digite o nome da cidade: ")
+    leia(cidade.nome)
+    
+    escreva("Digite a população da cidade: ")
+    leia(cidade.populacao)
+    
+    escreva("Digite a densidade demográfica da cidade (habitantes/km²): ")
+    leia(cidade.densidade_demografica)
+    
+    se (cidade.nome = "Curitiba") entao
+        escreval("A cidade cadastrada é a capital do estado do Paraná.")
+    senao
+        escreval("A cidade cadastrada NÃO é a capital do estado do Paraná.")
+    fimse
+fimalgoritmo
+</pre>
+<div class="explanation">
+    Este algoritmo cadastra dados de uma cidade do Paraná e verifica se é a capital, Curitiba.
+</div>
+
+<h2>6. Algoritmo "InverterValores"</h2>
+<pre>
+algoritmo "InverterValores"
+var
+    a, b : inteiro
+
+procedimento TrocarValores(var x: inteiro, var y: inteiro)
+var
+    temp : inteiro
+inicio
+    temp <- x
+    x <- y
+    y <- temp
+fimprocedimento
+
+inicio
+    escreva("Digite o primeiro valor (a): ")
+    leia(a)
+    escreva("Digite o segundo valor (b): ")
+    leia(b)
+
+    escreval("Valores antes da troca: a = ", a, " e b = ", b)
+
+    TrocarValores(a, b)
+
+    escreval("Valores após a troca: a = ", a, " e b = ", b)
+fimalgoritmo
+</pre>
+<div class="explanation">
+    Este algoritmo inverte os valores de duas variáveis usando um procedimento para trocar os valores.
+</div>
+
+</body>
+</html>

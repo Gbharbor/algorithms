@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios com Manipulação de Arquivos em VisualG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .explanation {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Exercícios com Manipulação de Arquivos</h1>
+
+<h2>Exercício 1: Contar Maiores de Idade em um Arquivo</h2>
+<p>Suponha que o arquivo chamado <code>pessoas.txt</code> esteja formatado da seguinte maneira:</p>
+
+<pre>
+Maria, 20
+João, 15
+Carlos, 18
+Ana, 22
+</pre>
+
+<p>Cada linha representa uma pessoa, onde o primeiro campo é o nome e o segundo campo é a idade.</p>
+
+<pre>
+algoritmo "Contar_Maiores_De_Idade"
+var
+    arquivo : texto
+    nome : caractere
+    idade, qtdMaiores : inteiro
+
+inicio
+    // Inicializa a contagem de maiores de idade
+    qtdMaiores <- 0
+
+    // Abre o arquivo de registro de pessoas
+    atribua("pessoas.txt", arquivo)
+    leia(arquivo, nome, idade) // Lê o primeiro registro do arquivo
+
+    // Lê o arquivo até o final
+    enquanto nao(se(EOF(arquivo))) faca
+        // Verifica se a pessoa é maior de idade
+        se idade >= 18 entao
+            qtdMaiores <- qtdMaiores + 1
+        fimse
+
+        // Lê o próximo registro do arquivo
+        leia(arquivo, nome, idade)
+    fimenquanto
+
+    // Fecha o arquivo
+    feche(arquivo)
+
+    // Exibe o número de pessoas maiores de idade
+    escreval("Quantidade de pessoas maiores de idade: ", qtdMaiores)
+fimalgoritmo
+</pre>
+
+<div class="explanation">
+    Este algoritmo lê o arquivo <code>pessoas.txt</code> e conta quantas pessoas são maiores de idade (idade ≥ 18).
+    <ul>
+        <li>Primeiro, a variável <code>qtdMaiores</code> é inicializada em 0.</li>
+        <li>O arquivo é aberto e o primeiro registro é lido com <code>leia(arquivo, nome, idade)</code>.</li>
+        <li>Em um loop <code>enquanto</code>, o algoritmo verifica se a idade é maior ou igual a 18. Se for, incrementa <code>qtdMaiores</code>.</li>
+        <li>O loop continua até o final do arquivo, momento em que o arquivo é fechado e o resultado é exibido.</li>
+    </ul>
+</div>
+
+---
+
+<h2>Exercício 2: Registrar Dados de uma Pessoa em um Arquivo</h2>
+<p>Este algoritmo lê os dados de uma pessoa (nome, idade, altura, sexo e se é doador de órgãos) e registra essas informações em um arquivo chamado <code>AGENDA.txt</code>.</p>
+
+<pre>
+algoritmo "Registrar_Pessoa_Em_Agenda"
+var
+    AGENDA : texto
+    nome : caractere
+    idade : inteiro
+    altura : real
+    sexo, doadorOrgaos : caractere
+
+inicio
+    // Leitura dos dados da pessoa
+    escreva("Digite o nome da pessoa: ")
+    leia(nome)
+    
+    escreva("Digite a idade da pessoa: ")
+    leia(idade)
+    
+    escreva("Digite a altura da pessoa (em metros, ex: 1.75): ")
+    leia(altura)
+    
+    escreva("Digite o sexo da pessoa (M para masculino, F para feminino): ")
+    leia(sexo)
+    
+    escreva("A pessoa é doadora de órgãos? (S para Sim, N para Não): ")
+    leia(doadorOrgaos)
+
+    // Abre o arquivo AGENDA para escrita (ou cria se não existir)
+    atribua("AGENDA.txt", AGENDA)
+    
+    // Grava os dados da pessoa no arquivo AGENDA
+    escreva(AGENDA, nome, ", ", idade, ", ", altura:0:2, ", ", sexo, ", ", doadorOrgaos, "\n")
+
+    // Fecha o arquivo AGENDA
+    feche(AGENDA)
+
+    escreval("Dados da pessoa registrados com sucesso na AGENDA.")
+fimalgoritmo
+</pre>
+
+<div class="explanation">
+    Este algoritmo registra os dados de uma pessoa em um arquivo de texto chamado <code>AGENDA.txt</code>.
+    <ul>
+        <li>O usuário insere o <strong>nome</strong>, <strong>idade</strong>, <strong>altura</strong>, <strong>sexo</strong> e se é <strong>doador de órgãos</strong> da pessoa.</li>
+        <li>O arquivo <code>AGENDA.txt</code> é aberto (ou criado se ainda não existir) em modo de escrita.</li>
+        <li>Os dados são escritos no arquivo em uma linha, com os campos separados por vírgulas.</li>
+        <li>Após o registro, o arquivo é fechado, e uma mensagem confirma que os dados foram salvos com sucesso.</li>
+    </ul>
+</div>
+
+<h3>Exemplo de Registro no Arquivo</h3>
+<p>Se o usuário insere os dados:</p>
+<ul>
+    <li>Nome: João</li>
+    <li>Idade: 30</li>
+    <li>Altura: 1.80</li>
+    <li>Sexo: M</li>
+    <li>Doador de Órgãos: N</li>
+</ul>
+<p>O conteúdo do arquivo <code>AGENDA.txt</code> será:</p>
+<pre>
+João, 30, 1.80, M, N
+</pre>
+
+</body>
+</html>

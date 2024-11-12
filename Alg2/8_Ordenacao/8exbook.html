@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos de Ordenação em VisualG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .explanation {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Algoritmos II - Algoritmos de Ordenação</h1>
+
+<h2>1. Ordenação com Bubble Sort</h2>
+<pre>
+algoritmo "Ordenar_Vetor_BubbleSort"
+var
+    vetor : vetor[1..10] de inteiro
+    i, j, temp : inteiro
+
+inicio
+    // Leitura dos 10 números no vetor
+    para i de 1 ate 10 faca
+        escreva("Digite o número na posição ", i, ": ")
+        leia(vetor[i])
+    fimpara
+
+    // Algoritmo Bubble Sort para ordenar o vetor
+    para i de 1 ate 9 faca
+        para j de 1 ate 10 - i faca
+            se vetor[j] > vetor[j+1] entao
+                temp <- vetor[j]
+                vetor[j] <- vetor[j+1]
+                vetor[j+1] <- temp
+            fimse
+        fimpara
+    fimpara
+
+    // Exibição do vetor ordenado
+    escreval("Vetor ordenado em ordem crescente:")
+    para i de 1 ate 10 faca
+        escreval(vetor[i])
+    fimpara
+fimalgoritmo
+</pre>
+<div class="explanation">
+    <strong>Bubble Sort:</strong> Compara elementos adjacentes e os troca se estiverem fora de ordem. A cada passagem, o maior elemento é movido para o final da sequência não ordenada.
+</div>
+
+---
+
+<h2>2. Ordenação com Insertion Sort</h2>
+<pre>
+algoritmo "Ordenar_Vetor_InsertionSort"
+var
+    vetor : vetor[1..10] de inteiro
+    i, j, chave : inteiro
+
+inicio
+    // Leitura dos 10 números no vetor
+    para i de 1 ate 10 faca
+        escreva("Digite o número na posição ", i, ": ")
+        leia(vetor[i])
+    fimpara
+
+    // Algoritmo Insertion Sort para ordenar o vetor
+    para i de 2 ate 10 faca
+        chave <- vetor[i]
+        j <- i - 1
+        enquanto (j > 0) e (vetor[j] > chave) faca
+            vetor[j + 1] <- vetor[j]
+            j <- j - 1
+        fimenquanto
+        vetor[j + 1] <- chave
+    fimpara
+
+    // Exibição do vetor ordenado
+    escreval("Vetor ordenado em ordem crescente:")
+    para i de 1 ate 10 faca
+        escreval(vetor[i])
+    fimpara
+fimalgoritmo
+</pre>
+<div class="explanation">
+    <strong>Insertion Sort:</strong> Percorre o vetor e insere cada elemento na posição correta. Os elementos à direita da posição atual são movidos para dar espaço ao valor a ser inserido.
+</div>
+
+---
+
+<h2>3. Ordenação com Selection Sort</h2>
+<pre>
+algoritmo "Ordenar_Vetor_SelectionSort"
+var
+    vetor : vetor[1..10] de inteiro
+    i, j, min, temp : inteiro
+
+inicio
+    // Leitura dos 10 números no vetor
+    para i de 1 ate 10 faca
+        escreva("Digite o número na posição ", i, ": ")
+        leia(vetor[i])
+    fimpara
+
+    // Algoritmo Selection Sort para ordenar o vetor
+    para i de 1 ate 9 faca
+        min <- i
+        para j de i + 1 ate 10 faca
+            se vetor[j] < vetor[min] entao
+                min <- j
+            fimse
+        fimpara
+
+        // Troca o elemento atual com o menor encontrado
+        se min <> i entao
+            temp <- vetor[i]
+            vetor[i] <- vetor[min]
+            vetor[min] <- temp
+        fimse
+    fimpara
+
+    // Exibição do vetor ordenado
+    escreval("Vetor ordenado em ordem crescente:")
+    para i de 1 ate 10 faca
+        escreval(vetor[i])
+    fimpara
+fimalgoritmo
+</pre>
+<div class="explanation">
+    <strong>Selection Sort:</strong> Encontra o menor elemento a partir da posição atual e o coloca no início. Isso é repetido até que o vetor esteja em ordem.
+</div>
+
+</body>
+</html>
