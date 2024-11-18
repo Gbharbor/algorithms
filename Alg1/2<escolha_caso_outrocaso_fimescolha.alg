@@ -1,28 +1,31 @@
-algoritmo "calculator"
+algoritmo "calc_escolha"
 var
-    numa: real
-    numb: real
-    result: real
+    numa, numb, result : real 
     ope: caractere
 inicio
-    escreva("number:")
+    escreva("number: ")
     leia(numa)
-    escreva("operacao:")
+    escreva ("operacao: ")
     leia(ope)
-    escreva("numb")
-    leia(numb)
-
+    escreva("number: ")
+    leia (numb)
     escolha ope 
         caso "+"
-            result <- numa + numb
+            result <- numa + numb 
         caso "-"
             result <- numa - numb
         caso "*"
             result <- numa * numb
         caso "/"
+            se numb = 0 entao
+                escreva("erro: divisao por zero")
+            senao
             result <- numa / numb
         outrocaso
-            escreva("ERROR")
+            escreva ("Erro: operador invalido")
+            result <- 0 //valor padrao para evitar erros
     fimescolha
-    escreval(numa," ",ope,numb,"=",result)
+    se ope = "+" ou ope = "-" ou ope = "*" ou (ope = "/" e numb <> 0) entao 
+        escreval(numa, " ", ope, numb, " = ", result)
+    fimse
 fimalgoritmo
