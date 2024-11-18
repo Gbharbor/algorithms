@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos com Design</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input {
+            width: 55px;
+        }
+        select {
+            width: 60px;
+        }
+        button {
+            width: 170px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+        .code-section {
+            margin-top: 20px;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            position: relative;
+        }
+        code {
+            display: block;
+            background: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .copy-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: none;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 4px;
+        }
+        .copy-btn:hover {
+            text-decoration: underline;
+            background-color: transparent;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Reajuste Salarial</h2>
+    <label for="salary">Digite o salário:</label>
+    <input type="number" id="salary" placeholder="Ex: 750">
+    <button onclick="reajusteSalarial()">Calcular</button>
+    <div class="output" id="salaryOutput"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <h3>Código em Visualg</h3>
+        <code>
+algoritmo "reajuste salarial"
+var 
+    sal, nsal: real  
+inicio
+    escreva ("salary")
+    leia (sal)
+    se (sal > 500) entao 
+        nsal <- (sal * 15) / 100 + sal //reajusta de 15%
+    senao 
+        se (sal >= 500) e (sal <= 1000) entao 
+            nsal <- (sal * 10) / 100 + sal //reajusta de 10%
+        senao
+            nsal <- (sal * 5) / 100 + sal  //reajusta de 5%
+        fimse
+    fimse
+    escreval("New Salary: ", nsal)
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Pagamento Anual</h2>
+    <label for="idNumber">Digite o ID:</label>
+    <input type="number" id="idNumber" placeholder="Ex: 12345">
+    <button onclick="pagamentoAnual()">Verificar Pagamento</button>
+    <div class="output" id="paymentOutput"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <h3>Código em Visualg</h3>
+        <code>
+algoritmo "pagamento_anual"
+var
+    id, final : inteiro
+inicio
+    escreva ("ID number")
+    leia (id)
+    final <- id mod 10 //random rule (inteiros)
+    se final = 0 entao 
+        escreva("PAY JAN")
+    senao 
+        se final = 1 entao 
+            escreva("pay FEB")
+        senao
+            escreva ("PAY MAR")
+        fimse
+    fimse
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Maior ou Igual Entre Três Números</h2>
+    <label for="num1">Primeiro:</label>
+    <input type="number" id="num1" placeholder="Ex: 10">
+    <label for="num2">Segundo:</label>
+    <input type="number" id="num2" placeholder="Ex: 20">
+    <label for="num3">Terceiro:</label>
+    <input type="number" id="num3" placeholder="Ex: 15">
+    <button onclick="maiorEntreTres()">Verificar</button>
+    <div class="output" id="biggerOutput"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <h3>Código em Visualg</h3>
+        <code>
+algoritmo "maior ou igual num entre 3"
+var
+    a , b , c : inteiro
+inicio
+    escreva("first")
+    leia(a)
+    escreva("second")
+    leia(b)
+    escreva("third")
+    leia(c)
+    se (a > b) e (a > c) entao 
+        escreva("bigger: ", a)
+    senao 
+        se (a == b) e (b == c) entao
+            escreva("iguais")
+        senao
+            se (b > c) entao  
+                escreva("bigger: ", b)
+            senao
+                escreva ("bigger: ", c)
+            fimse
+        fimse
+    fimse
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Calculadora Básica</h2>
+    <label for="number1">Número 1:</label>
+    <input type="number" id="number1" placeholder="Ex: 10">
+    <label for="operator">Operador:</label>
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <label for="number2">Número 2:</label>
+    <input type="number" id="number2" placeholder="Ex: 5">
+    <button onclick="calculadora()">Calcular</button>
+    <div class="output" id="calcOutput"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <h3>Código em Visualg</h3>
+        <code>
+algoritmo "calculater 1"
+var
+    numa, numb, result : real
+    ope : caractere
+inicio
+    escreva ("Number: ")
+    leia(numa)
+    escreva("operator")
+    leia(ope)
+    escreva ("Number: ")
+    leia(numb)
+    se ope = "+" entao 
+        result <- numa + numb 
+    senao 
+        se ope = "-" entao
+            result <- numa - numb
+        senao
+            se ope = "*" entao
+                result <- numa * numb
+            senao 
+                se ope = "/" entao
+                    result <- numa / numb
+                fimse
+            fimse
+        fimse
+    fimse
+    escreval(numa" ",ope," ",numb " = ", result)
+fimalgoritmo
+        </code>
+    </div>
+</div>
+<script>
+    function copyCode(button) {
+    const codeElement = button.nextElementSibling;
+    const codeText = codeElement.innerText;
+
+    navigator.clipboard.writeText(codeText).then(() => {
+    button.innerText = "Copiado!";
+        setTimeout(() => {
+              button.innerText = "Copiar";
+            }, 2000);
+        }).catch(err => {
+            alert("Erro ao copiar: " + err);
+        });
+    }
+    function reajusteSalarial() {
+        let sal = parseFloat(document.getElementById('salary').value);
+        let nsal;
+
+        if (sal > 1000) {
+            nsal = (sal * 15) / 100 + sal;
+        } else if (sal >= 500) {
+            nsal = (sal * 10) / 100 + sal;
+        } else {
+            nsal = (sal * 5) / 100 + sal;
+        }
+
+        document.getElementById('salaryOutput').innerText = `Novo Salário: ${nsal.toFixed(2)}`;
+    }
+
+    function pagamentoAnual() {
+        let id = parseInt(document.getElementById('idNumber').value);
+        let final = id % 10;
+        let result;
+
+        if (final === 0) {
+            result = "Pagamento em Janeiro";
+        } else if (final === 1) {
+            result = "Pagamento em Fevereiro";
+        } else {
+            result = "Pagamento em Março";
+        }
+
+        document.getElementById('paymentOutput').innerText = result;
+    }
+
+    function maiorEntreTres() {
+        let a = parseInt(document.getElementById('num1').value);
+        let b = parseInt(document.getElementById('num2').value);
+        let c = parseInt(document.getElementById('num3').value);
+        let result;
+
+        if (a > b && a > c) {
+            result = `Maior: ${a}`;
+        } else if (a === b && b === c) {
+            result = "Todos os números são iguais.";
+        } else if (b > c) {
+            result = `Maior: ${b}`;
+        } else {
+            result = `Maior: ${c}`;
+        }
+
+        document.getElementById('biggerOutput').innerText = result;
+    }
+
+    function calculadora() {
+        let numa = parseFloat(document.getElementById('number1').value);
+        let numb = parseFloat(document.getElementById('number2').value);
+        let ope = document.getElementById('operator').value;
+        let result;
+
+        if (ope === "+") {
+            result = numa + numb;
+        } else if (ope === "-") {
+            result = numa - numb;
+        } else if (ope === "*") {
+            result = numa * numb;
+        } else if (ope === "/") {
+            result = numa / numb;
+        }
+
+        document.getElementById('calcOutput').innerText = `${numa} ${ope} ${numb} = ${result}`;
+    }
+</script>
+
+</body>
+</html>

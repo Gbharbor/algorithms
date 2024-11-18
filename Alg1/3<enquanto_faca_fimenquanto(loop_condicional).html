@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos em Repetição</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input {
+            width: 55px;
+        }
+        select {
+            width: 60px;
+        }
+        button {
+            
+            width: 200px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+        .code-section {
+            margin-top: 20px;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            position: relative;
+        }
+        code {
+            display: block;
+            background: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .copy-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: none;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 4px;
+        }
+        .copy-btn:hover {
+            text-decoration: underline;
+            background-color: transparent;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Repetição de 0 a 100</h2>
+    <button onclick="repeticaoDeZeroACem()">Executar</button>
+    <div class="output" id="outputRepeticaoDeZeroACem"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <code>
+algoritmo "repeticao de 0 a 100"
+var
+    n : inteiro
+inicio
+    n <- 0
+    enquanto n < 100 faca 
+        n <- n+1
+        escreval(n)
+    fimenquanto
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Soma de Números Positivos Pares</h2>
+    <button onclick="somaPositivosPares()">Executar</button>
+    <div class="output" id="outputSomaPositivosPares"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <code>
+algoritmo "soma positivos pares"
+var
+    sum, n : inteiro
+inicio
+    n <- 2
+    sum <- 0
+    enquanto n < 100 faca 
+        sum <- sum + n
+        n <- n + 2
+    fimenquanto
+    escreval("A soma dos numeros pares inteiro é: ", sum)
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Repetir "HELLO" 10 Vezes</h2>
+    <button onclick="repetirHello()">Executar</button>
+    <div class="output" id="outputRepetirHello"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <code>
+algoritmo "repetir HELLO"
+var
+    n : inteiro
+inicio
+    n <- 1
+    enquanto n <= 10 faca
+        escreval("HELLO")
+        n <- n + 1
+    fimenquanto
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Tabela de Multiplicação</h2>
+    <label for="multiplicar">Digite o número para gerar a tabela:</label>
+    <input type="number" id="multiplicar" placeholder="Ex: 5">
+    <button onclick="tabelaMultiplicacao()">Gerar</button>
+    <div class="output" id="outputTabelaMultiplicacao"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <code>
+algoritmo "tabela de multiplicacao"
+var
+    valor, contador : inteiro 
+inicio
+    escreva ("Multiplicar: ")
+    leia(valor)
+    contador <- 1
+    enquanto contador <= 10 faca
+        escreval(valor," x ",contador," = ",(valor*contador))
+        contador <- contador + 1
+    fimenquanto
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Soma de Números Positivos Digitados</h2>
+    <button onclick="somaDeNumerosPositivos()">Executar</button>
+    <div class="output" id="outputSomaDeNumerosPositivos"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <code>
+algoritmo "Type 10 numbers & sum only positives numbers"
+var
+    n, sumpositivo, contador : inteiro 
+inicio
+    sumpositivo <- 0
+    contador <- 1
+    enquanto contador <=10 faca 
+        escreva("digite os numeros: ", contador)
+        leia(n)
+        se n > 0 entao
+            sumpositivo <- sumpositivo + n 
+        fimse
+    fimenquanto
+    escreva("a soma dos numeros positivos: ", sumpositivo)
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Cálculo de Fatorial</h2>
+    <label for="fatorial">Digite o número:</label>
+    <input type="number" id="fatorial" placeholder="Ex: 5">
+    <button onclick="calcularFatorial()">Calcular</button>
+    <div class="output" id="outputCalcularFatorial"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <code>
+algoritmo "fatorial"
+var
+    contador, fat, fatorial: inteiro
+inicio
+    escreva("informe o numero para calcular o fatorial: ")
+    leia(fatorial)
+    fat <- 1
+    contador <- fatorial 
+    enquanto (contador > 1) faca 
+        fat <- fat * contador
+        contador <- contador - 1
+    fimenquanto
+    escreva("o valor do fatorial é: ", fat)
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<script>
+    function repeticaoDeZeroACem() {
+        let output = '';
+        for (let n = 1; n <= 100; n++) {
+            output += n + '\n';
+        }
+        document.getElementById('outputRepeticaoDeZeroACem').innerText = output;
+    }
+
+    function somaPositivosPares() {
+        let sum = 0;
+        for (let n = 2; n < 100; n += 2) {
+            sum += n;
+        }
+        document.getElementById('outputSomaPositivosPares').innerText = `A soma dos números pares é: ${sum}`;
+    }
+
+    function repetirHello() {
+        let output = '';
+        for (let i = 1; i <= 10; i++) {
+            output += 'HELLO\n';
+        }
+        document.getElementById('outputRepetirHello').innerText = output;
+    }
+
+    function tabelaMultiplicacao() {
+        const valor = parseInt(document.getElementById('multiplicar').value);
+        let output = '';
+        for (let i = 1; i <= 10; i++) {
+            output += `${valor} x ${i} = ${valor * i}\n`;
+        }
+        document.getElementById('outputTabelaMultiplicacao').innerText = output;
+    }
+
+    function somaDeNumerosPositivos() {
+        let sumpositivo = 0;
+        for (let i = 1; i <= 10; i++) {
+            const n = parseInt(prompt(`Digite o número ${i}:`));
+            if (n > 0) sumpositivo += n;
+        }
+        document.getElementById('outputSomaDeNumerosPositivos').innerText = `A soma dos números positivos é: ${sumpositivo}`;
+    }
+
+    function calcularFatorial() {
+        let fatorial = parseInt(document.getElementById('fatorial').value);
+        let fat = 1;
+        for (let i = fatorial; i > 1; i--) {
+            fat *= i;
+        }
+        document.getElementById('outputCalcularFatorial').innerText = `O fatorial de ${fatorial} é: ${fat}`;
+    }
+
+    function copyCode(button) {
+        const codeElement = button.nextElementSibling;
+        const codeText = codeElement.innerText;
+
+        navigator.clipboard.writeText(codeText).then(() => {
+            button.innerText = "Copiado!";
+            setTimeout(() => {
+                button.innerText = "Copiar";
+            }, 2000);
+        }).catch(err => {
+            alert("Erro ao copiar: " + err);
+        });
+    }
+</script>
+
+</body>
+</html>

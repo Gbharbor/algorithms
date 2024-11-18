@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora com Escolha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input {
+            width: 55px;
+        }
+        select {
+            width: 60px;
+        }
+        button {
+            width: 100%;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+        .code-section {
+            margin-top: 20px;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            position: relative;
+        }
+        code {
+            display: block;
+            background: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .copy-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: none;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 4px;
+        }
+        .copy-btn:hover {
+            text-decoration: underline;
+            background-color: transparent;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Calculadora com Escolha</h2>
+    <label for="numa">Primeiro Número:</label>
+    <input type="number" id="numa" placeholder="Ex: 10">
+    <label for="ope">Operador:</label>
+    <select id="ope">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <label for="numb">Segundo Número:</label>
+    <input type="number" id="numb" placeholder="Ex: 5">
+    <button onclick="calcEscolha()">Calcular</button>
+    <div class="output" id="calcOutput"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        <code>
+algoritmo "calc_escolha"
+var
+    numa, numb, result : real 
+    ope: caractere
+inicio
+    escreva("number: ")
+    leia(numa)
+    escreva ("operacao: ")
+    leia(ope)
+    escreva("number: ")
+    leia (numb)
+    escolha ope 
+        caso "+"
+            result <- numa + numb 
+        caso "-"
+            result <- numa - numb
+        caso "*"
+            result <- numa * numb
+        caso "/"
+            se numb = 0 entao
+                escreva("erro: divisao por zero")
+            senao
+                result <- numa / numb
+        outrocaso
+            escreva ("Erro: operador invalido")
+            result <- 0 //valor padrao para evitar erros
+    fimescolha
+    se ope = "+" ou ope = "-" ou ope = "*" ou (ope = "/" e numb <> 0) entao 
+        escreval(numa, " ", ope, numb, " = ", result)
+    fimse
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<script>
+    // Função para calcular a operação baseada no operador
+    function calcEscolha() {
+        const numa = parseFloat(document.getElementById('numa').value);
+        const numb = parseFloat(document.getElementById('numb').value);
+        const ope = document.getElementById('ope').value;
+        let result;
+
+        switch (ope) {
+            case "+":
+                result = numa + numb;
+                break;
+            case "-":
+                result = numa - numb;
+                break;
+            case "*":
+                result = numa * numb;
+                break;
+            case "/":
+                if (numb === 0) {
+                    document.getElementById('calcOutput').innerText = "Erro: Divisão por zero.";
+                    return;
+                }
+                result = numa / numb;
+                break;
+            default:
+                document.getElementById('calcOutput').innerText = "Erro: Operador inválido.";
+                return;
+        }
+
+        // Exibir o resultado
+        document.getElementById('calcOutput').innerText = `${numa} ${ope} ${numb} = ${result}`;
+    }
+
+    // Função para copiar o código do bloco <code>
+    function copyCode(button) {
+        const codeElement = button.nextElementSibling;
+        const codeText = codeElement.innerText;
+
+        navigator.clipboard.writeText(codeText).then(() => {
+            button.innerText = "Copiado!";
+            setTimeout(() => {
+                button.innerText = "Copiar";
+            }, 2000);
+        }).catch(err => {
+            alert("Erro ao copiar: " + err);
+        });
+    }
+</script>
+
+</body>
+</html>
