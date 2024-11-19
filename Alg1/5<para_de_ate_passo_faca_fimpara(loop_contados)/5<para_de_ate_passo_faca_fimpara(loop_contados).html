@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loop Condicional II</title>
+    <title>Loop Contados</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -105,65 +105,38 @@
 <body>
 
 <div class="container">
-    <h2>Repita Até 100</h2>
-    <button onclick="repitaAte100()">Executar</button>
-    <div class="output" id="outputRepitaAte100"></div>
+    <h2>Contador de 0 a 99</h2>
+    <button onclick="executarContador()">Executar</button>
+    <div class="output" id="outputContador"></div>
     <div class="code-section">
-        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-        <code>
-algoritmo "repita_ate_100"
+        <button class="copy-btn" onclick="copiarCodigo('codigoContador')">Copiar</button>
+        <code id="codigoContador">
+algoritmo "contador"
 var 
     n : inteiro
 inicio
-    n <- 0
-    repita 
+    para n de 0 ate 99 passo 1 faca 
         escreval(n)
-        n <- n + 1
-    ate n > 100
+    fimpara
 fimalgoritmo
         </code>
     </div>
 </div>
 
 <div class="container">
-    <h2>Soma Inteiros Positivos até 100</h2>
-    <button onclick="somaInteirosPositivosAte100()">Executar</button>
-    <div class="output" id="outputSomaInteirosPositivosAte100"></div>
+    <h2>Números Pares de 0 a 100</h2>
+    <button onclick="executarNumerosPares()">Executar</button>
+    <div class="output" id="outputNumerosPares"></div>
     <div class="code-section">
-        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-        <code>
-algoritmo "soma_inteiro_positivo_ate_100"
-var
-    sum, n : inteiro 
-inicio
-    n <- 2
-    sum <- 0
-    repita
-        sum <- sum + n 
-        n <- n + 2
-    ate n > 100
-    escreva("a soma dos num pares ate 100 é: ", sum)
-fimalgoritmo
-        </code>
-    </div>
-</div>
-
-<div class="container">
-    <h2>Repetir um Caractere</h2>
-    <button onclick="repetirUmCaractere()">Executar</button>
-    <div class="output" id="outputRepetirUmCaractere"></div>
-    <div class="code-section">
-        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-        <code>
-algoritmo "repetir_um_caractere"
-var
+        <button class="copy-btn" onclick="copiarCodigo('codigoNumerosPares')">Copiar</button>
+        <code id="codigoNumerosPares">
+algoritmo "numeros_pares"
+var 
     n : inteiro
 inicio
-    n <- 1
-    repita
-        escreval(n, "HELLO!")
-        n <- n + 1
-    ate n > 10
+    para n de 0 ate 100 passo 2 faca 
+        escreval(n)
+    fimpara 
 fimalgoritmo
         </code>
     </div>
@@ -171,30 +144,67 @@ fimalgoritmo
 
 <div class="container">
     <h2>Tabuada</h2>
-    <label for="tabuada">Digite o número para gerar a tabuada:</label>
-    <input type="number" id="tabuada" placeholder="Ex: 5">
-    <button onclick="tabuada()">Gerar</button>
+    <label for="inputTabuada">Digite um valor para a tabuada:</label>
+    <input type="number" id="inputTabuada" placeholder="Ex: 5">
+    <button onclick="executarTabuada()">Gerar</button>
     <div class="output" id="outputTabuada"></div>
     <div class="code-section">
-        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-        <code>
+        <button class="copy-btn" onclick="copiarCodigo('codigoTabuada')">Copiar</button>
+        <code id="codigoTabuada">
 algoritmo "tabuada"
 var
     valor, contador : inteiro
-inicio
-    escreva("tabuada do : ")
+inicio 
+    escreva("informe o valor desejado: ")
     leia(valor)
-    contador <- 1 
-    repita 
-        escreval(valor," x ",contador," = ",(valor * contador))
-        contador <- contador + 1
-    ate contador > 10
+
+    para contador de 1 ate 10 passo 1 faca
+        escreval(valor," x ", contador," = ",(valor * contador))
+    fimpara
 fimalgoritmo
         </code>
     </div>
 </div>
 
-<script src="4<repita_ate(loop_condicional).js"></script>
+<script>
+    function copiarCodigo(id) {
+        const codigo = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(codigo).then(() => {
+            alert("Código copiado com sucesso!");
+        }).catch(err => {
+            console.error("Erro ao copiar código: ", err);
+        });
+    }
+
+    function executarContador() {
+        let resultado = "";
+        for (let n = 0; n <= 99; n++) {
+            resultado += n + "\n";
+        }
+        document.getElementById("outputContador").innerText = resultado;
+    }
+
+    function executarNumerosPares() {
+        let resultado = "";
+        for (let n = 0; n <= 100; n += 2) {
+            resultado += n + "\n";
+        }
+        document.getElementById("outputNumerosPares").innerText = resultado;
+    }
+
+    function executarTabuada() {
+        const valor = parseInt(document.getElementById("inputTabuada").value);
+        if (isNaN(valor)) {
+            alert("Por favor, insira um valor válido.");
+            return;
+        }
+        let resultado = "";
+        for (let contador = 1; contador <= 10; contador++) {
+            resultado += `${valor} x ${contador} = ${valor * contador}\n`;
+        }
+        document.getElementById("outputTabuada").innerText = resultado;
+    }
+</script>
 
 </body>
 </html>

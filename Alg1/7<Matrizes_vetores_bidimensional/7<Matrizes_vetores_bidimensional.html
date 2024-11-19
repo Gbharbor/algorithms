@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caso_Outrocaso</title>
+    <title>Matrizes Bidimensional</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 650px;
+            max-width: 800px;
             margin: auto;
             padding: 20px;
             background: #fff;
@@ -41,7 +41,14 @@
             width: 60px;
         }
         button {
-            width: 100%;
+            
+            width: 200px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
         }
         button {
             background-color: #007BFF;
@@ -62,7 +69,7 @@
             margin-top: 20px;
             background: #f4f4f4;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 5px;
             overflow-x: auto;
             position: relative;
         }
@@ -94,63 +101,80 @@
             color: #fff;
         }
     </style>
+    </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Calculadora com Escolha</h2>
-    <label for="numa">Primeiro Número:</label>
-    <input type="number" id="numa" placeholder="Ex: 10">
-    <label for="ope">Operador:</label>
-    <select id="ope">
-        <option value="+">+</option>
-        <option value="-">-</option>
-        <option value="*">*</option>
-        <option value="/">/</option>
-    </select>
-    <label for="numb">Segundo Número:</label>
-    <input type="number" id="numb" placeholder="Ex: 5">
-    <button onclick="calcEscolha()">Calcular</button>
-    <div class="output" id="calcOutput"></div>
+    <h2>Multiplicar Matriz</h2>
+    <button onclick="executarMultiplicarMatriz()">Executar</button>
+    <div class="output" id="outputMultiplicarMatriz"></div>
     <div class="code-section">
-        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-        <code>
-algoritmo "calc_escolha"
+        <button class="copy-btn" onclick="copiarCodigo('codigoMultiplicarMatriz')">Copiar</button>
+        <code id="codigoMultiplicarMatriz">
+algoritmo "multiplicar matriz"
 var
-    numa, numb, result : real 
-    ope: caractere
+    mat : vetor [1..5,1..5] de inteiro
+    x,L,C : inteiro
 inicio
-    escreva("number: ")
-    leia(numa)
-    escreva ("operacao: ")
-    leia(ope)
-    escreva("number: ")
-    leia (numb)
-    escolha ope 
-        caso "+"
-            result <- numa + numb 
-        caso "-"
-            result <- numa - numb
-        caso "*"
-            result <- numa * numb
-        caso "/"
-            se numb = 0 entao
-                escreva("erro: divisao por zero")
-            senao
-                result <- numa / numb
-        outrocaso
-            escreva ("Erro: operador invalido")
-            result <- 0 //valor padrao para evitar erros
-    fimescolha
-    se ope = "+" ou ope = "-" ou ope = "*" ou (ope = "/" e numb <> 0) entao 
-        escreval(numa, " ", ope, numb, " = ", result)
-    fimse
+    escreval("digite os elementos da matriz 5x5: ")
+    para L de 1 ate 5 faca 
+        para C de 1 ate 5 faca
+            escreva("Valores [",L,"][",C,"]: ")
+            leia(mat[L,C])
+        fimpara
+    fimpara
+    escreva("Multiplicar matriz por: ")
+    leia(x)
+    escreva("Matriz multiplicada por ", x," : ")
+    para L de 1 ate 5 faca
+        para C de 1 ate 5 faca
+            escreva(mat[L,C] * x, " ")
+        fimpara
+        escreval(" ")
+    fimpara
 fimalgoritmo
         </code>
     </div>
 </div>
 
-<script src="2<escolha_caso_outrocaso_fimescolha.js"></script>
+<div class="container">
+    <h2>Soma da Diagonal Principal</h2>
+    <button onclick="executarSomaDiagonal()">Executar</button>
+    <div class="output" id="outputSomaDiagonal"></div>
+    <div class="code-section">
+        <button class="copy-btn" onclick="copiarCodigo('codigoSomaDiagonal')">Copiar</button>
+        <code id="codigoSomaDiagonal">
+algoritmo "soma diagonal principal"
+var
+    mat : vetor [1..5,1..5]
+    somaD, L, C : inteiro
+inicio
+    escreval("Digite os elementos da matriz: ")
+    para L de 1 ate 5 faca 
+        para C de 1 ate 5 faca
+            escreva("Valores[",L,"][",C,"]: ")
+            leia(mat[L,C])
+        fimpara
+    fimpara
+    escreval("Matriz digitada: ")
+    para L de 1 ate 5 faca
+        para C de 1 ate 5 faca
+            escreva(mat[L,C]," ")
+        fimpara
+        escreval(" ")
+    fimpara
+    somaD <- 0
+    para L de 1 ate 5 faca
+        somaD <- somaD + mat[L,L]
+    fimpara
+    escreval("soma da diagonal principal: ", somaD)
+fimalgoritmo
+        </code>
+    </div>
+</div>
+
+<script src="7<Matrizes_vetores_bidimensional.js"></script>
 
 </body>
 </html>
