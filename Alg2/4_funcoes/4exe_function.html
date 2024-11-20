@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 - exe Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        pre, code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            display: block;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            margin-bottom: 30px;
+        }
+        .copy-btn {
+            margin-top: 5px;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Algoritmos II - 4 exe Funções</h1>
+
+<!-- Algoritmo 1 -->
+<div class="container">
+    <h2>Exercício 1: Reajuste Salarial com Função</h2>
+    <pre id="codigoReajusteSalarialFuncao">
+algoritmo "Reajuste_Salarial_Com_Funcao"
+var
+    salario, salarioCorrigido : real
+
+// Função para calcular o salário corrigido de acordo com a faixa salarial
+funcao CalcularReajuste(salarioAtual: real): real
+var
+    percentualReajuste : real
+inicio
+    se salarioAtual <= 1000 entao
+        percentualReajuste <- 0.10 // Reajuste de 10%
+    senao
+        se salarioAtual > 1000 e salarioAtual < 2000 entao
+            percentualReajuste <- 0.08 // Reajuste de 8%
+        senao
+            percentualReajuste <- 0.06 // Reajuste de 6%
+        fimse
+    fimse
+
+    // Retorna o salário corrigido
+    retorne salarioAtual * (1 + percentualReajuste)
+fimfuncao
+
+inicio
+    escreva("Digite o salário do funcionário: ")
+    leia(salario)
+    salarioCorrigido <- CalcularReajuste(salario)
+    escreval("O salário corrigido do funcionário é: R$ ", salarioCorrigido:0:2)
+fimalgoritmo
+    </pre>
+    <button class="copy-btn" onclick="copiarCodigo('codigoReajusteSalarialFuncao')">Copiar Código</button>
+    <button class="copy-btn" onclick="executarReajusteSalarialFuncao()">Executar</button>
+    <div class="output" id="outputReajusteSalarialFuncao"></div>
+</div>
+
+<!-- Algoritmo 2 -->
+<div class="container">
+    <h2>Exercício 2: Verificar Maioridade</h2>
+    <pre id="codigoVerificarMaioridade">
+algoritmo "Verificar_Maioridade"
+var
+    nome : caractere
+    idade : inteiro
+    ehMaior : logico
+
+// Função para verificar se a pessoa é maior de idade
+funcao EhMaiorDeIdade(idadePessoa: inteiro): logico
+inicio
+    se idadePessoa >= 18 entao
+        retorne verdadeiro
+    senao
+        retorne falso
+    fimse
+fimfuncao
+
+inicio
+    escreva("Digite o nome da pessoa: ")
+    leia(nome)
+    escreva("Digite a idade da pessoa: ")
+    leia(idade)
+    ehMaior <- EhMaiorDeIdade(idade)
+    se ehMaior entao
+        escreval(nome, " é maior de idade.")
+    senao
+        escreval(nome, " não é maior de idade.")
+    fimse
+fimalgoritmo
+    </pre>
+    <button class="copy-btn" onclick="copiarCodigo('codigoVerificarMaioridade')">Copiar Código</button>
+    <button class="copy-btn" onclick="executarVerificarMaioridade()">Executar</button>
+    <div class="output" id="outputVerificarMaioridade"></div>
+</div>
+<!-- Algoritmo 3 -->
+<div class="container">
+    <h2>Exercício 3: Reajuste Salarial com Porcentagem</h2>
+    <pre id="codigoReajusteSalarialPorcentagem">
+algoritmo "Reajuste_Salarial_Com_Porcentagem"
+var
+    salario, percentualReajuste, salarioCorrigido : real
+
+// Função para determinar a porcentagem de reajuste de acordo com a faixa salarial
+funcao ObterPercentualReajuste(salarioAtual: real): real
+inicio
+    se salarioAtual <= 1000 entao
+        retorne 0.10 // Reajuste de 10%
+    senao
+        se salarioAtual > 1000 e salarioAtual < 2000 entao
+            retorne 0.08 // Reajuste de 8%
+        senao
+            retorne 0.06 // Reajuste de 6%
+        fimse
+    fimse
+fimfuncao
+
+inicio
+    escreva("Digite o salário do funcionário: ")
+    leia(salario)
+    percentualReajuste <- ObterPercentualReajuste(salario)
+    salarioCorrigido <- salario * (1 + percentualReajuste)
+    escreval("O percentual de reajuste aplicado foi de: ", (percentualReajuste * 100):0:2, "%")
+    escreval("O salário corrigido do funcionário é: R$ ", salarioCorrigido:0:2)
+fimalgoritmo
+    </pre>
+    <button class="copy-btn" onclick="copiarCodigo('codigoReajusteSalarialPorcentagem')">Copiar Código</button>
+    <button class="copy-btn" onclick="executarReajusteSalarialPorcentagem()">Executar</button>
+    <div class="output" id="outputReajusteSalarialPorcentagem"></div>
+</div>
+<script>
+    // Função para copiar código
+    function copiarCodigo(id) {
+        const codigo = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(codigo).then(() => {
+            alert("Código copiado com sucesso!");
+        }).catch(err => {
+            console.error("Erro ao copiar código: ", err);
+        });
+    }
+
+    // Algoritmo 1: Reajuste Salarial com Função
+    function executarReajusteSalarialFuncao() {
+        const salario = parseFloat(prompt("Digite o salário do funcionário:"));
+        if (isNaN(salario) || salario <= 0) {
+            alert("Digite um valor válido para o salário!");
+            return;
+        }
+
+        let percentualReajuste = 0;
+        if (salario <= 1000) percentualReajuste = 0.10;
+        else if (salario > 1000 && salario < 2000) percentualReajuste = 0.08;
+        else percentualReajuste = 0.06;
+
+        const salarioCorrigido = salario * (1 + percentualReajuste);
+        const resultado = `O salário corrigido do funcionário é: R$ ${salarioCorrigido.toFixed(2)}`;
+        document.getElementById("outputReajusteSalarialFuncao").innerText = resultado;
+    }
+
+    // Algoritmo 2: Verificar Maioridade
+    function executarVerificarMaioridade() {
+        const nome = prompt("Digite o nome da pessoa:");
+        const idade = parseInt(prompt("Digite a idade da pessoa:"));
+        if (isNaN(idade) || idade < 0) {
+            alert("Digite uma idade válida!");
+            return;
+        }
+
+        const ehMaior = idade >= 18;
+        const resultado = ehMaior
+            ? `${nome} é maior de idade.`
+            : `${nome} não é maior de idade.`;
+
+        document.getElementById("outputVerificarMaioridade").innerText = resultado;
+    }
+     // Algoritmo 3: Reajuste Salarial com Porcentagem
+     function executarReajusteSalarialPorcentagem() {
+        const salario = parseFloat(prompt("Digite o salário do funcionário:"));
+        if (isNaN(salario) || salario <= 0) {
+            alert("Digite um valor válido para o salário!");
+            return;
+        }
+
+        // Função que determina a porcentagem de reajuste
+        function obterPercentualReajuste(salarioAtual) {
+            if (salarioAtual <= 1000) {
+                return 0.10; // Reajuste de 10%
+            } else if (salarioAtual > 1000 && salarioAtual < 2000) {
+                return 0.08; // Reajuste de 8%
+            } else {
+                return 0.06; // Reajuste de 6%
+            }
+        }
+
+        // Obtém o percentual de reajuste
+        const percentualReajuste = obterPercentualReajuste(salario);
+
+        // Calcula o novo salário
+        const salarioCorrigido = salario * (1 + percentualReajuste);
+
+        // Gera o resultado
+        const resultado = `O percentual de reajuste aplicado foi de: ${(percentualReajuste * 100).toFixed(2)}%\n` +
+                          `O salário corrigido do funcionário é: R$ ${salarioCorrigido.toFixed(2)}`;
+        document.getElementById("outputReajusteSalarialPorcentagem").innerText = resultado;
+    }
+</script>
+
+</body>
+</html>

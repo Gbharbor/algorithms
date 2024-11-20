@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 - exe Modularizacao e Procedimento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        pre, code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            display: block;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            margin-bottom: 30px;
+        }
+        .copy-btn {
+            margin-top: 5px;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Algoritmo II - 3 exe Modularizacao e Procedimentos</h1>
+
+<!-- Algoritmo 1 -->
+<div class="container">
+    <h2>Exercício 1: Soma Números N Vezes</h2>
+    <pre id="codigoSomaNumerosNVezes">
+algoritmo "Soma_Numeros_N_Vezes"
+var
+    n, i : inteiro
+
+// Procedimento para ler dois números e exibir a soma
+procedimento SomarDoisNumeros()
+var
+    numero1, numero2, soma : real
+inicio
+    escreva("Digite o primeiro número: ")
+    leia(numero1)
+    escreva("Digite o segundo número: ")
+    leia(numero2)
+    soma <- numero1 + numero2
+    escreval("A soma dos números é: ", soma)
+fimprocedimento
+
+inicio
+    // Solicita o número de vezes que o procedimento será executado
+    escreva("Digite quantas vezes deseja realizar a operação de soma: ")
+    leia(n)
+
+    // Executa o procedimento N vezes
+    para i de 1 ate n faca
+        escreval("Execução ", i, " de ", n)
+        SomarDoisNumeros()
+    fimpara
+fimalgoritmo
+    </pre>
+    <button class="copy-btn" onclick="copiarCodigo('codigoSomaNumerosNVezes')">Copiar Código</button>
+    <button class="copy-btn" onclick="executarSomaNumerosNVezes()">Executar</button>
+    <div class="output" id="outputSomaNumerosNVezes"></div>
+</div>
+
+<!-- Algoritmo 2 -->
+<div class="container">
+    <h2>Exercício 2: Soma Números com Chamada</h2>
+    <pre id="codigoSomaNumerosChamada">
+algoritmo "Soma_Numeros_Chamada"
+var
+    n, i : inteiro
+    numero1, numero2 : real
+
+// Procedimento para somar dois números e exibir o resultado
+procedimento SomarDoisNumeros(numero1: real, numero2: real)
+var
+    soma : real
+inicio
+    soma <- numero1 + numero2
+    escreval("A soma de ", numero1, " e ", numero2, " é: ", soma)
+fimprocedimento
+
+inicio
+    // Solicita o número de vezes que o procedimento será executado
+    escreva("Digite quantas vezes deseja realizar a operação de soma: ")
+    leia(n)
+
+    // Executa o procedimento N vezes com entrada dos valores pelo usuário
+    para i de 1 ate n faca
+        escreval("Execução ", i, " de ", n)
+        escreva("Digite o primeiro número: ")
+        leia(numero1)
+        escreva("Digite o segundo número: ")
+        leia(numero2)
+        // Chama o procedimento passando os números como argumentos
+        SomarDoisNumeros(numero1, numero2)
+    fimpara
+fimalgoritmo
+    </pre>
+    <button class="copy-btn" onclick="copiarCodigo('codigoSomaNumerosChamada')">Copiar Código</button>
+    <button class="copy-btn" onclick="executarSomaNumerosChamada()">Executar</button>
+    <div class="output" id="outputSomaNumerosChamada"></div>
+</div>
+
+<script>
+    // Função para copiar código
+    function copiarCodigo(id) {
+        const codigo = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(codigo).then(() => {
+            alert("Código copiado com sucesso!");
+        }).catch(err => {
+            console.error("Erro ao copiar código: ", err);
+        });
+    }
+
+    // Função para executar "Soma Números N Vezes"
+    function executarSomaNumerosNVezes() {
+        let n = parseInt(prompt("Quantas vezes deseja realizar a operação de soma?"));
+        if (isNaN(n) || n <= 0) {
+            alert("Digite um número válido!");
+            return;
+        }
+
+        let resultado = "";
+        for (let i = 1; i <= n; i++) {
+            let numero1 = parseFloat(prompt(`Execução ${i} de ${n}\nDigite o primeiro número:`));
+            let numero2 = parseFloat(prompt(`Execução ${i} de ${n}\nDigite o segundo número:`));
+            let soma = numero1 + numero2;
+            resultado += `Execução ${i}: A soma de ${numero1} e ${numero2} é ${soma.toFixed(2)}\n`;
+        }
+        document.getElementById("outputSomaNumerosNVezes").innerText = resultado;
+    }
+
+    // Função para executar "Soma Números com Chamada"
+    function executarSomaNumerosChamada() {
+        let n = parseInt(prompt("Quantas vezes deseja realizar a operação de soma?"));
+        if (isNaN(n) || n <= 0) {
+            alert("Digite um número válido!");
+            return;
+        }
+
+        let resultado = "";
+        for (let i = 1; i <= n; i++) {
+            let numero1 = parseFloat(prompt(`Execução ${i} de ${n}\nDigite o primeiro número:`));
+            let numero2 = parseFloat(prompt(`Execução ${i} de ${n}\nDigite o segundo número:`));
+            let soma = numero1 + numero2;
+            resultado += `Execução ${i}: A soma de ${numero1} e ${numero2} é ${soma.toFixed(2)}\n`;
+        }
+        document.getElementById("outputSomaNumerosChamada").innerText = resultado;
+    }
+</script>
+
+</body>
+</html>
