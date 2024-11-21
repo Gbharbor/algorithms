@@ -11,13 +11,19 @@ inicio
     para i de 1 ate n faca
         fat <- fat * i // Multiplica o valor atual de fat pelo índice i
     fimpara
-    retorne fat
+    retorne fat // Retorna o resultado final
 fimfuncao
 
 inicio
     // Leitura do número para calcular o fatorial
     escreva("Digite um número para calcular o fatorial: ")
     leia(numero)
+    
+    // Validação para números negativos
+    se numero < 0 entao
+        escreval("Fatorial não é definido para números negativos.")
+        interrompa // Termina o programa para entradas inválidas
+    fimse
     
     // Chama a função Fatorial e armazena o resultado
     resultado <- Fatorial(numero)
@@ -44,6 +50,18 @@ inicio
     // Leitura do número para calcular o fatorial
     escreva("Digite um número para calcular o fatorial: ")
     leia(numero)
+    
+    // Validação para números negativos
+    se numero < 0 entao
+        escreval("Fatorial não é definido para números negativos.")
+        interrompa // Termina o programa para entradas inválidas
+    fimse
+
+    // Limitação para números grandes
+    se numero > 15 entao
+        escreval("Número muito grande! A recursão pode falhar para valores maiores que 15.")
+        interrompa
+    fimse
     
     // Chama a função Fatorial e armazena o resultado
     resultado <- Fatorial(numero)

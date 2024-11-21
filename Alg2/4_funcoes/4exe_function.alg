@@ -1,84 +1,105 @@
 algoritmo "reajuste salarial com funcoes"
 var
     salario, salariocorrigido : real
-    funcao calcularreajuste(salarioatual: real): real
-        var
-            porcentualreajuste : real
-        inicio
-            se (salarioatual <= 1000) entao 
-                porcentualreajuste <- 0.10 //10%
+
+// Função para calcular o reajuste baseado no salário atual
+funcao calcularreajuste(salarioatual: real): real
+    var
+        porcentualreajuste : real
+    inicio
+        // Define o percentual de reajuste de acordo com o salário atual
+        se (salarioatual <= 1000) entao 
+            porcentualreajuste <- 0.10 // 10%
+        senao
+            se (salarioatual > 1000 e salarioatual < 2000) entao
+                porcentualreajuste <- 0.08 // 8%
             senao
-                se (salarioatual > 1000 e salarioatual < 2000) entao
-                    porcentualreajuste <- 0.08 //8%
-                senao
-                    porecentualreajuste <- 0.06 //6%
-                fimse
+                porcentualreajuste <- 0.06 // 6%
             fimse
-            //retorne o salario corrigido
-            retorne salarioatual * (1 + porcentualreajuste)
+        fimse
+
+        // Retorna o salário corrigido
+        retorne salarioatual * (1 + porcentualreajuste)
     fimfuncao
-//fluxo principal 
+
+// Fluxo principal
 inicio
-    //leitura do salario do funcionario
-    escreva("digite o salario do funcionrio: ")
+    // Leitura do salário do funcionário
+    escreva("Digite o salário do funcionário: ")
     leia(salario)
-    //chama a funcao para calcular o salario corrigido
+
+    // Chama a função para calcular o salário corrigido
     salariocorrigido <- calcularreajuste(salario)
-    //exibe o salario corrigido
-    escreval("o salario corrigido do funcionario é : ",salariocorrigido:0:2)//pode reduzir ou aumentar para preencher sempre as 2 casas decimais.
+
+    // Exibe o salário corrigido
+    escreval("O salário corrigido do funcionário é: ", salariocorrigido:0:2)
 fimalgoritmo
 ///////////////////////////////////////////////////////////////////////////////////////////
 algoritmo "reajuste salarial direto no fluxo principal"
 var
     salario, porcentualreajuste, salariocorrigido: real
-    //nesse caso na funcao so digo qual é a porcentagem do reajuste.
-    funcao obterporcentualreajuste(salarioatual:real):real
-        se salarioatual <= 1000 entao
-            retorne 0.10 //10%
+
+// Função para obter o percentual de reajuste com base no salário atual
+funcao obterporcentualreajuste(salarioatual: real): real
+    se salarioatual <= 1000 entao
+        retorne 0.10 // 10%
+    senao 
+        se salarioatual > 1000 e salarioatual < 2000 entao
+            retorne 0.08 // 8%
         senao 
-            se salarioatual > 1000 e salarioatual < 2000 entao
-                retorne 0.08 //8%
-            senao 
-                retorne 0.06 //6%
-            fimse
+            retorne 0.06 // 6%
         fimse
-    fimfuncao
+    fimse
+fimfuncao
+
+// Fluxo principal
 inicio
-    //leitura do salario do funcionario
-    escreva("digite o salario do funcionario: ")
+    // Leitura do salário do funcionário
+    escreva("Digite o salário do funcionário: ")
     leia(salario)
-    //cahama a funcao para obter o porcentual do reajuste
-    porcentualreajuste <-obterporcentualreajuste(salario)
-    //calcula o novo salario aplicando o porcentual de reajuste
-    salariocorrigido <- salario * (1 + porcentualreajuste) //O cálculo agora considera o salário original(1) mais o reajuste.
-    //exibir salario corrigido, multiplicar por 100 pq o reajuste ta em num decimal, precisamos do valor em %
-    escreval("o porcentual de reajuste aplicado foi de: ", (porcentualreajuste * 100):0:2, "%")
-    escreval("o salario corrigido do funcionario é de: ", salariocorrigido:0:2)
+
+    // Chama a função para obter o percentual de reajuste
+    porcentualreajuste <- obterporcentualreajuste(salario)
+
+    // Calcula o novo salário aplicando o percentual de reajuste
+    salariocorrigido <- salario * (1 + porcentualreajuste)
+
+    // Exibe o percentual de reajuste aplicado e o salário corrigido
+    escreval("O percentual de reajuste aplicado foi de: ", (porcentualreajuste * 100):0:2, "%")
+    escreval("O salário corrigido do funcionário é: ", salariocorrigido:0:2)
 fimalgoritmo
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 algoritmo "verificar maioridade"
 var
-    nome : caractere 
+    nome : caractere
     idade : inteiro
     emaior : logico
-    funcao emaiordeidade(idadepessoa: inteiro): inteiro
-        se idadepessoa >= 18 entao 
-            retorne verdadeiro
-        senao
-            retorne falso
-        fimse
-    fimfuncao
-inicio
-    escreva("digite o nome da pessoa: ")
-    leia(nome)
-    escreva("idade: ")
-    leia(idade)
-    //chama a funcao emaiordeidade para verificar se é ou nao
-    emaior <- emaiordeidade(idade)
-    //exibir o resultado c base no valor retornado pelo funcao(como se estivessemos substituindo na funcao, porem aplicando a regra da funcao, o primeiro termo sendo verdade e o segundo falso.)
-    se emaior entao 
-        escreval(nome,"é maior de idade. ")
+
+// Função para verificar se a pessoa é maior de idade
+funcao emaiordeidade(idadepessoa: inteiro): logico
+    se idadepessoa >= 18 entao 
+        retorne verdadeiro
     senao
-        escreval(nome, " nao é maior de idade. ")
+        retorne falso
+    fimse
+fimfuncao
+
+// Fluxo principal
+inicio
+    // Leitura do nome e idade da pessoa
+    escreva("Digite o nome da pessoa: ")
+    leia(nome)
+    escreva("Idade: ")
+    leia(idade)
+
+    // Chama a função emaiordeidade para verificar se é maior de idade
+    emaior <- emaiordeidade(idade)
+
+    // Exibe o resultado com base no valor retornado pela função
+    se emaior entao 
+        escreval(nome, " é maior de idade.")
+    senao
+        escreval(nome, " não é maior de idade.")
     fimse
 fimalgoritmo

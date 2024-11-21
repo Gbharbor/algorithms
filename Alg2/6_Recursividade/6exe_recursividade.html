@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos II - 6 Recursividade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            margin-bottom: 30px;
+        }
+        pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn {
+            background-color: #007BFF;
+            color: white;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+        .execute-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .execute-btn:hover {
+            background-color: #1e7e34;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e6f7ff;
+            border: 1px solid #b3e6ff;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Algoritmos II - 6 exe Recursividade</h1>
+
+<!-- Algoritmo 1: Fatorial Iterativo -->
+<div class="container">
+    <h2>1. Fatorial Iterativo</h2>
+    <pre id="codigoFatorialIterativo">
+algoritmo "Calcular_Fatorial"
+var
+    numero, resultado : inteiro
+
+// Função para calcular o fatorial de um número usando uma estrutura de repetição
+funcao Fatorial(n: inteiro): inteiro
+var
+    i, fat : inteiro
+inicio
+    fat <- 1 // Inicializa o fatorial como 1
+    para i de 1 ate n faca
+        fat <- fat * i // Multiplica o valor atual de fat pelo índice i
+    fimpara
+    retorne fat // Retorna o resultado final
+fimfuncao
+
+inicio
+    // Leitura do número para calcular o fatorial
+    escreva("Digite um número para calcular o fatorial: ")
+    leia(numero)
+    
+    // Validação para números negativos
+    se numero < 0 entao
+        escreval("Fatorial não é definido para números negativos.")
+        interrompa // Termina o programa para entradas inválidas
+    fimse
+    
+    // Chama a função Fatorial e armazena o resultado
+    resultado <- Fatorial(numero)
+    
+    // Exibe o resultado
+    escreval("O fatorial de ", numero, " é: ", resultado)
+fimalgoritmo
+    </pre>
+    <button class="copy-btn" onclick="copiarCodigo('codigoFatorialIterativo')">Copiar Código</button>
+    <button class="execute-btn" onclick="executarFatorialIterativo()">Executar</button>
+    <div class="output" id="outputFatorialIterativo"></div>
+</div>
+
+<!-- Algoritmo 2: Fatorial Recursivo -->
+<div class="container">
+    <h2>2. Fatorial Recursivo</h2>
+    <pre id="codigoFatorialRecursivo">
+algoritmo "Calcular_Fatorial_Recursivo"
+var
+    numero, resultado : inteiro
+
+// Função recursiva para calcular o fatorial de um número
+funcao Fatorial(n: inteiro): inteiro
+inicio
+    se n = 0 entao
+        retorne 1 // Caso base: o fatorial de 0 é 1
+    senao
+        retorne n * Fatorial(n - 1) // Chamada recursiva para calcular o fatorial
+    fimse
+fimfuncao
+
+inicio
+    // Leitura do número para calcular o fatorial
+    escreva("Digite um número para calcular o fatorial: ")
+    leia(numero)
+    
+    // Validação para números negativos
+    se numero < 0 entao
+        escreval("Fatorial não é definido para números negativos.")
+        interrompa // Termina o programa para entradas inválidas
+    fimse
+
+    // Limitação para números grandes
+    se numero > 15 entao
+        escreval("Número muito grande! A recursão pode falhar para valores maiores que 15.")
+        interrompa
+    fimse
+    
+    // Chama a função Fatorial e armazena o resultado
+    resultado <- Fatorial(numero)
+    
+    // Exibe o resultado
+    escreval("O fatorial de ", numero, " é: ", resultado)
+fimalgoritmo
+    </pre>
+    <button class="copy-btn" onclick="copiarCodigo('codigoFatorialRecursivo')">Copiar Código</button>
+    <button class="execute-btn" onclick="executarFatorialRecursivo()">Executar</button>
+    <div class="output" id="outputFatorialRecursivo"></div>
+</div>
+
+<!-- Script para Copiar Código e Executar -->
+<script>
+    function copiarCodigo(id) {
+        const codigo = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(codigo).then(() => {
+            alert("Código copiado com sucesso!");
+        }).catch(err => {
+            console.error("Erro ao copiar o código: ", err);
+        });
+    }
+
+    function executarFatorialIterativo() {
+        let numero = parseInt(prompt("Digite um número para calcular o fatorial:"));
+        if (isNaN(numero)) {
+            alert("Por favor, insira um número válido.");
+            return;
+        }
+        if (numero < 0) {
+            alert("Fatorial não é definido para números negativos.");
+            return;
+        }
+        let resultado = 1;
+        for (let i = 1; i <= numero; i++) {
+            resultado *= i;
+        }
+        document.getElementById("outputFatorialIterativo").innerText = `O fatorial de ${numero} é: ${resultado}`;
+    }
+
+    function executarFatorialRecursivo() {
+        let numero = parseInt(prompt("Digite um número para calcular o fatorial:"));
+        if (isNaN(numero)) {
+            alert("Por favor, insira um número válido.");
+            return;
+        }
+        if (numero < 0) {
+            alert("Fatorial não é definido para números negativos.");
+            return;
+        }
+        if (numero > 15) {
+            alert("Número muito grande! A recursão pode falhar para valores maiores que 15.");
+            return;
+        }
+
+        function Fatorial(n) {
+            if (n === 0) return 1;
+            return n * Fatorial(n - 1);
+        }
+
+        let resultado = Fatorial(numero);
+        document.getElementById("outputFatorialRecursivo").innerText = `O fatorial de ${numero} é: ${resultado}`;
+    }
+</script>
+
+</body>
+</html>

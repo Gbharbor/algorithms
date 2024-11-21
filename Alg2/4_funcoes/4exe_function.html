@@ -163,7 +163,7 @@ fimalgoritmo
     <div class="output" id="outputReajusteSalarialPorcentagem"></div>
 </div>
 <script>
-    // Função para copiar código
+    // Função para copiar o código
     function copiarCodigo(id) {
         const codigo = document.getElementById(id).innerText;
         navigator.clipboard.writeText(codigo).then(() => {
@@ -173,7 +173,7 @@ fimalgoritmo
         });
     }
 
-    // Algoritmo 1: Reajuste Salarial com Função
+    // Reajuste Salarial com Função
     function executarReajusteSalarialFuncao() {
         const salario = parseFloat(prompt("Digite o salário do funcionário:"));
         if (isNaN(salario) || salario <= 0) {
@@ -181,17 +181,16 @@ fimalgoritmo
             return;
         }
 
-        let percentualReajuste = 0;
-        if (salario <= 1000) percentualReajuste = 0.10;
-        else if (salario > 1000 && salario < 2000) percentualReajuste = 0.08;
-        else percentualReajuste = 0.06;
-
+        // Lógica de reajuste
+        const percentualReajuste = salario <= 1000 ? 0.10 : salario < 2000 ? 0.08 : 0.06;
         const salarioCorrigido = salario * (1 + percentualReajuste);
-        const resultado = `O salário corrigido do funcionário é: R$ ${salarioCorrigido.toFixed(2)}`;
+
+        // Resultado
+        const resultado = `O salário corrigido é: R$ ${salarioCorrigido.toFixed(2)}`;
         document.getElementById("outputReajusteSalarialFuncao").innerText = resultado;
     }
 
-    // Algoritmo 2: Verificar Maioridade
+    // Verificar Maioridade
     function executarVerificarMaioridade() {
         const nome = prompt("Digite o nome da pessoa:");
         const idade = parseInt(prompt("Digite a idade da pessoa:"));
@@ -201,40 +200,23 @@ fimalgoritmo
         }
 
         const ehMaior = idade >= 18;
-        const resultado = ehMaior
-            ? `${nome} é maior de idade.`
-            : `${nome} não é maior de idade.`;
-
+        const resultado = ehMaior ? `${nome} é maior de idade.` : `${nome} não é maior de idade.`;
         document.getElementById("outputVerificarMaioridade").innerText = resultado;
     }
-     // Algoritmo 3: Reajuste Salarial com Porcentagem
-     function executarReajusteSalarialPorcentagem() {
+
+    // Reajuste Salarial com Porcentagem
+    function executarReajusteSalarialPorcentagem() {
         const salario = parseFloat(prompt("Digite o salário do funcionário:"));
         if (isNaN(salario) || salario <= 0) {
             alert("Digite um valor válido para o salário!");
             return;
         }
 
-        // Função que determina a porcentagem de reajuste
-        function obterPercentualReajuste(salarioAtual) {
-            if (salarioAtual <= 1000) {
-                return 0.10; // Reajuste de 10%
-            } else if (salarioAtual > 1000 && salarioAtual < 2000) {
-                return 0.08; // Reajuste de 8%
-            } else {
-                return 0.06; // Reajuste de 6%
-            }
-        }
-
-        // Obtém o percentual de reajuste
-        const percentualReajuste = obterPercentualReajuste(salario);
-
-        // Calcula o novo salário
+        const percentualReajuste = salario <= 1000 ? 0.10 : salario < 2000 ? 0.08 : 0.06;
         const salarioCorrigido = salario * (1 + percentualReajuste);
 
-        // Gera o resultado
-        const resultado = `O percentual de reajuste aplicado foi de: ${(percentualReajuste * 100).toFixed(2)}%\n` +
-                          `O salário corrigido do funcionário é: R$ ${salarioCorrigido.toFixed(2)}`;
+        const resultado = `Percentual aplicado: ${(percentualReajuste * 100).toFixed(2)}%\n` +
+                          `Salário corrigido: R$ ${salarioCorrigido.toFixed(2)}`;
         document.getElementById("outputReajusteSalarialPorcentagem").innerText = resultado;
     }
 </script>
