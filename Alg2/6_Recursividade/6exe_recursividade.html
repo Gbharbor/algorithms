@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algoritmos II - 6 Recursividade</title>
+    <title>Algoritmos II - Recursividade</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,7 +20,7 @@
         }
         pre {
             background-color: #f9f9f9;
-            padding: 10px;
+            padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
             overflow-x: auto;
@@ -28,7 +28,7 @@
         }
         button {
             margin-top: 10px;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -50,19 +50,20 @@
         }
         .output {
             margin-top: 20px;
-            padding: 10px;
+            padding: 15px;
             background: #e6f7ff;
             border: 1px solid #b3e6ff;
             border-radius: 5px;
             font-family: monospace;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-<h1>Algoritmos II - 6 exe Recursividade</h1>
+<h1>Algoritmos II - Recursividade</h1>
 
-<!-- Algoritmo 1: Fatorial Iterativo -->
+<!-- Fatorial Iterativo -->
 <div class="container">
     <h2>1. Fatorial Iterativo</h2>
     <pre id="codigoFatorialIterativo">
@@ -70,42 +71,23 @@ algoritmo "Calcular_Fatorial"
 var
     numero, resultado : inteiro
 
-// Função para calcular o fatorial de um número usando uma estrutura de repetição
 funcao Fatorial(n: inteiro): inteiro
 var
     i, fat : inteiro
 inicio
-    fat <- 1 // Inicializa o fatorial como 1
+    fat <- 1
     para i de 1 ate n faca
-        fat <- fat * i // Multiplica o valor atual de fat pelo índice i
+        fat <- fat * i
     fimpara
-    retorne fat // Retorna o resultado final
+    retorne fat
 fimfuncao
-
-inicio
-    // Leitura do número para calcular o fatorial
-    escreva("Digite um número para calcular o fatorial: ")
-    leia(numero)
-    
-    // Validação para números negativos
-    se numero < 0 entao
-        escreval("Fatorial não é definido para números negativos.")
-        interrompa // Termina o programa para entradas inválidas
-    fimse
-    
-    // Chama a função Fatorial e armazena o resultado
-    resultado <- Fatorial(numero)
-    
-    // Exibe o resultado
-    escreval("O fatorial de ", numero, " é: ", resultado)
-fimalgoritmo
     </pre>
     <button class="copy-btn" onclick="copiarCodigo('codigoFatorialIterativo')">Copiar Código</button>
-    <button class="execute-btn" onclick="executarFatorialIterativo()">Executar</button>
+    <button class="execute-btn" onclick="executar('iterativo')">Executar</button>
     <div class="output" id="outputFatorialIterativo"></div>
 </div>
 
-<!-- Algoritmo 2: Fatorial Recursivo -->
+<!-- Fatorial Recursivo -->
 <div class="container">
     <h2>2. Fatorial Recursivo</h2>
     <pre id="codigoFatorialRecursivo">
@@ -113,95 +95,182 @@ algoritmo "Calcular_Fatorial_Recursivo"
 var
     numero, resultado : inteiro
 
-// Função recursiva para calcular o fatorial de um número
 funcao Fatorial(n: inteiro): inteiro
 inicio
     se n = 0 entao
-        retorne 1 // Caso base: o fatorial de 0 é 1
+        retorne 1
     senao
-        retorne n * Fatorial(n - 1) // Chamada recursiva para calcular o fatorial
+        retorne n * Fatorial(n - 1)
     fimse
 fimfuncao
-
-inicio
-    // Leitura do número para calcular o fatorial
-    escreva("Digite um número para calcular o fatorial: ")
-    leia(numero)
-    
-    // Validação para números negativos
-    se numero < 0 entao
-        escreval("Fatorial não é definido para números negativos.")
-        interrompa // Termina o programa para entradas inválidas
-    fimse
-
-    // Limitação para números grandes
-    se numero > 15 entao
-        escreval("Número muito grande! A recursão pode falhar para valores maiores que 15.")
-        interrompa
-    fimse
-    
-    // Chama a função Fatorial e armazena o resultado
-    resultado <- Fatorial(numero)
-    
-    // Exibe o resultado
-    escreval("O fatorial de ", numero, " é: ", resultado)
-fimalgoritmo
     </pre>
     <button class="copy-btn" onclick="copiarCodigo('codigoFatorialRecursivo')">Copiar Código</button>
-    <button class="execute-btn" onclick="executarFatorialRecursivo()">Executar</button>
+    <button class="execute-btn" onclick="executar('recursivo')">Executar</button>
     <div class="output" id="outputFatorialRecursivo"></div>
 </div>
 
-<!-- Script para Copiar Código e Executar -->
+<!-- Fibonacci Iterativo -->
+<div class="container">
+    <h2>3. Fibonacci Iterativo</h2>
+    <pre id="codigoFibonacciIterativo">
+algoritmo "Fibonacci Iterativo"
+var
+    numero, resultado: inteiro
+
+funcao fibonacci(n: inteiro): inteiro
+    var
+        a, b, temp, i: inteiro
+    a <- 0
+    b <- 1
+
+    se n = 0 entao
+        retorne a
+    fimse
+
+    para i de 2 ate n faca
+        temp <- a + b
+        a <- b
+        b <- temp
+    fimpara
+
+    retorne b
+fimfuncao
+    </pre>
+    <button class="copy-btn" onclick="copiarCodigo('codigoFibonacciIterativo')">Copiar Código</button>
+    <button class="execute-btn" onclick="executarFibonacci('iterativo')">Executar</button>
+    <div class="output" id="outputFibonacciIterativo"></div>
+</div>
+
+<!-- Fibonacci Recursivo -->
+<div class="container">
+    <h2>4. Fibonacci Recursivo</h2>
+    <pre id="codigoFibonacciRecursivo">
+algoritmo "Fibonacci Recursivo"
+var
+    numero, resultado: inteiro
+
+funcao fibonacci(n: inteiro): inteiro
+    se n = 0 entao
+        retorne 0
+    senao
+        se n = 1 entao
+            retorne 1
+        senao
+            retorne fibonacci(n - 1) + fibonacci(n - 2)
+        fimse
+    fimse
+fimfuncao
+    </pre>
+    <button class="copy-btn" onclick="copiarCodigo('codigoFibonacciRecursivo')">Copiar Código</button>
+    <button class="execute-btn" onclick="executarFibonacci('recursivo')">Executar</button>
+    <div class="output" id="outputFibonacciRecursivo"></div>
+</div>
 <script>
+    // Função para copiar o código
     function copiarCodigo(id) {
         const codigo = document.getElementById(id).innerText;
         navigator.clipboard.writeText(codigo).then(() => {
             alert("Código copiado com sucesso!");
         }).catch(err => {
-            console.error("Erro ao copiar o código: ", err);
+            alert("Erro ao copiar o código!");
         });
     }
 
-    function executarFatorialIterativo() {
-        let numero = parseInt(prompt("Digite um número para calcular o fatorial:"));
+    // Função para validação de entrada
+    function validarEntrada(numero) {
         if (isNaN(numero)) {
             alert("Por favor, insira um número válido.");
-            return;
+            return false;
         }
         if (numero < 0) {
             alert("Fatorial não é definido para números negativos.");
-            return;
+            return false;
         }
-        let resultado = 1;
-        for (let i = 1; i <= numero; i++) {
-            resultado *= i;
-        }
-        document.getElementById("outputFatorialIterativo").innerText = `O fatorial de ${numero} é: ${resultado}`;
+        return true;
     }
 
-    function executarFatorialRecursivo() {
-        let numero = parseInt(prompt("Digite um número para calcular o fatorial:"));
+    // Fatorial Iterativo
+    function fatorialIterativo(n) {
+        let resultado = 1;
+        for (let i = 1; i <= n; i++) {
+            resultado *= i;
+        }
+        return resultado;
+    }
+
+    // Fatorial Recursivo
+    function fatorialRecursivo(n) {
+        if (n === 0) return 1;
+        return n * fatorialRecursivo(n - 1);
+    }
+
+    // Função para executar
+    function executar(tipo) {
+        const numero = parseInt(prompt("Digite um número para calcular o fatorial:"));
+        if (!validarEntrada(numero)) return;
+
+        let resultado;
+        if (tipo === "iterativo") {
+            resultado = fatorialIterativo(numero);
+            document.getElementById("outputFatorialIterativo").innerText = `O fatorial de ${numero} é: ${resultado}`;
+        } else if (tipo === "recursivo") {
+            if (numero > 15) {
+                alert("Número muito grande! A recursão pode falhar para valores maiores que 15.");
+                return;
+            }
+            resultado = fatorialRecursivo(numero);
+            document.getElementById("outputFatorialRecursivo").innerText = `O fatorial de ${numero} é: ${resultado}`;
+        }
+    }
+     // Função para validação de entrada
+     function validarEntrada(numero) {
         if (isNaN(numero)) {
             alert("Por favor, insira um número válido.");
-            return;
+            return false;
         }
         if (numero < 0) {
-            alert("Fatorial não é definido para números negativos.");
-            return;
+            alert("Fibonacci não é definido para números negativos.");
+            return false;
         }
-        if (numero > 15) {
-            alert("Número muito grande! A recursão pode falhar para valores maiores que 15.");
-            return;
-        }
+        return true;
+    }
 
-        function Fatorial(n) {
-            if (n === 0) return 1;
-            return n * Fatorial(n - 1);
+    // Fibonacci Iterativo
+    function fibonacciIterativo(n) {
+        let a = 0, b = 1, temp;
+        if (n === 0) return a;
+        for (let i = 2; i <= n; i++) {
+            temp = a + b;
+            a = b;
+            b = temp;
         }
+        return b;
+    }
 
-        let resultado = Fatorial(numero);
-        document.getElementById("outputFatorialRecursivo").innerText = `O fatorial de ${numero} é: ${resultado}`;
+    // Fibonacci Recursivo
+    function fibonacciRecursivo(n) {
+        if (n === 0) return 0;
+        if (n === 1) return 1;
+        return fibonacciRecursivo(n - 1) + fibonacciRecursivo(n - 2);
+    }
+
+    // Função para executar os algoritmos de Fibonacci
+    function executarFibonacci(tipo) {
+        const numero = parseInt(prompt("Digite um número para calcular Fibonacci:"));
+        if (!validarEntrada(numero)) return;
+
+        let resultado;
+        if (tipo === "iterativo") {
+            resultado = fibonacciIterativo(numero);
+            document.getElementById("outputFibonacciIterativo").innerText = `O Fibonacci de ${numero} é: ${resultado}`;
+        } else if (tipo === "recursivo") {
+            if (numero > 20) {
+                alert("Número muito grande! A recursão pode causar problemas de desempenho.");
+                return;
+            }
+            resultado = fibonacciRecursivo(numero);
+            document.getElementById("outputFibonacciRecursivo").innerText = `O Fibonacci de ${numero} é: ${resultado}`;
+        }
     }
 </script>
 

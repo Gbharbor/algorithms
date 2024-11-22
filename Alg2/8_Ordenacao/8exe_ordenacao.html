@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos de Ordenação em VisualG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .explanation {
+            margin-top: 10px;
+            font-style: italic;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6f7ff;
+            border: 1px solid #b3e6ff;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .copy-btn {
+            background-color: #007BFF;
+            color: white;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+        .execute-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .execute-btn:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Algoritmos II - Algoritmos de Ordenação</h1>
+
+<!-- Bubble Sort -->
+<h2>1. Ordenação com Bubble Sort</h2>
+<pre id="codigoBubbleSort">
+algoritmo "Ordenar_Vetor_BubbleSort"
+var
+    vetor : vetor[1..10] de inteiro
+    i, j, temp : inteiro
+
+inicio
+    para i de 1 ate 10 faca
+        escreva("Digite o número na posição ", i, ": ")
+        leia(vetor[i])
+    fimpara
+
+    para i de 1 ate 9 faca
+        para j de 1 ate 10 - i faca
+            se vetor[j] > vetor[j+1] entao
+                temp <- vetor[j]
+                vetor[j] <- vetor[j+1]
+                vetor[j+1] <- temp
+            fimse
+        fimpara
+    fimpara
+
+    escreval("Vetor ordenado em ordem crescente:")
+    para i de 1 ate 10 faca
+        escreval(vetor[i])
+    fimpara
+fimalgoritmo
+</pre>
+<button class="copy-btn" onclick="copiarCodigo('codigoBubbleSort')">Copiar Código</button>
+<button class="execute-btn" onclick="executarBubbleSort()">Executar</button>
+<div class="output" id="outputBubbleSort"></div>
+
+<!-- Insertion Sort -->
+<h2>2. Ordenação com Insertion Sort</h2>
+<pre id="codigoInsertionSort">
+algoritmo "Ordenar_Vetor_InsertionSort"
+var
+    vetor : vetor[1..10] de inteiro
+    i, j, chave : inteiro
+
+inicio
+    para i de 1 ate 10 faca
+        escreva("Digite o número na posição ", i, ": ")
+        leia(vetor[i])
+    fimpara
+
+    para i de 2 ate 10 faca
+        chave <- vetor[i]
+        j <- i - 1
+        enquanto (j > 0) e (vetor[j] > chave) faca
+            vetor[j + 1] <- vetor[j]
+            j <- j - 1
+        fimenquanto
+        vetor[j + 1] <- chave
+    fimpara
+
+    escreval("Vetor ordenado em ordem crescente:")
+    para i de 1 ate 10 faca
+        escreval(vetor[i])
+    fimpara
+fimalgoritmo
+</pre>
+<button class="copy-btn" onclick="copiarCodigo('codigoInsertionSort')">Copiar Código</button>
+<button class="execute-btn" onclick="executarInsertionSort()">Executar</button>
+<div class="output" id="outputInsertionSort"></div>
+
+<!-- Selection Sort -->
+<h2>3. Ordenação com Selection Sort</h2>
+<pre id="codigoSelectionSort">
+algoritmo "Ordenar_Vetor_SelectionSort"
+var
+    vetor : vetor[1..10] de inteiro
+    i, j, min, temp : inteiro
+
+inicio
+    para i de 1 ate 10 faca
+        escreva("Digite o número na posição ", i, ": ")
+        leia(vetor[i])
+    fimpara
+
+    para i de 1 ate 9 faca
+        min <- i
+        para j de i + 1 ate 10 faca
+            se vetor[j] < vetor[min] entao
+                min <- j
+            fimse
+        fimpara
+
+        se min <> i entao
+            temp <- vetor[i]
+            vetor[i] <- vetor[min]
+            vetor[min] <- temp
+        fimse
+    fimpara
+
+    escreval("Vetor ordenado em ordem crescente:")
+    para i de 1 ate 10 faca
+        escreval(vetor[i])
+    fimpara
+fimalgoritmo
+</pre>
+<button class="copy-btn" onclick="copiarCodigo('codigoSelectionSort')">Copiar Código</button>
+<button class="execute-btn" onclick="executarSelectionSort()">Executar</button>
+<div class="output" id="outputSelectionSort"></div>
+
+<script>
+    // Função para copiar o código
+    function copiarCodigo(id) {
+        const codigo = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(codigo).then(() => {
+            alert("Código copiado com sucesso!");
+        }).catch(err => {
+            alert("Erro ao copiar o código!");
+        });
+    }
+
+    // Função para executar Bubble Sort
+    function executarBubbleSort() {
+        const vetor = prompt("Digite 10 números separados por espaço:").split(" ").map(Number);
+        for (let i = 0; i < vetor.length - 1; i++) {
+            for (let j = 0; j < vetor.length - 1 - i; j++) {
+                if (vetor[j] > vetor[j + 1]) {
+                    [vetor[j], vetor[j + 1]] = [vetor[j + 1], vetor[j]];
+                }
+            }
+        }
+        document.getElementById("outputBubbleSort").innerText = `Vetor ordenado: ${vetor.join(", ")}`;
+    }
+
+    // Função para executar Insertion Sort
+    function executarInsertionSort() {
+        const vetor = prompt("Digite 10 números separados por espaço:").split(" ").map(Number);
+        for (let i = 1; i < vetor.length; i++) {
+            let chave = vetor[i];
+            let j = i - 1;
+            while (j >= 0 && vetor[j] > chave) {
+                vetor[j + 1] = vetor[j];
+                j--;
+            }
+            vetor[j + 1] = chave;
+        }
+        document.getElementById("outputInsertionSort").innerText = `Vetor ordenado: ${vetor.join(", ")}`;
+    }
+
+    // Função para executar Selection Sort
+    function executarSelectionSort() {
+        const vetor = prompt("Digite 10 números separados por espaço:").split(" ").map(Number);
+        for (let i = 0; i < vetor.length - 1; i++) {
+            let min = i;
+            for (let j = i + 1; j < vetor.length; j++) {
+                if (vetor[j] < vetor[min]) {
+                    min = j;
+                }
+            }
+            if (min !== i) {
+                [vetor[i], vetor[min]] = [vetor[min], vetor[i]];
+            }
+        }
+        document.getElementById("outputSelectionSort").innerText = `Vetor ordenado: ${vetor.join(", ")}`;
+    }
+</script>
+
+</body>
+</html>
