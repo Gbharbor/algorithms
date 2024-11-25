@@ -53,3 +53,27 @@ inicio
         somardoisnumeros(num1, num2)
     fimpara
 fimalgoritmo
+/////////////////////////////////////////////////////////////////////////
+algoritmo "inverter valores"
+var 
+    a, b : inteiro
+//procedimento para trocar os valores de duas variaveis
+    procedimento trocarvalores (var x: inteiro , var y: inteiro)
+    var
+        temp: inteiro
+    inicio
+        temp <- x
+        x <- y
+        y <- temp
+    fimprocedimento
+inicio
+    //leitura das variaveis
+    escreva("digite o primeiro valor(a): ")
+    leia(a)
+    escreva("digie o segundo valor(b): ")
+    leia(b)
+    //exibir os valores antes das trocas
+    escreval("valores antes da troca: a= ", a," e b=", b)
+    //chama o procedimento agr para  inverter os valores.
+    escreval("valores apos a troca: a=",a," e b= "b)
+fimalgoritmo
