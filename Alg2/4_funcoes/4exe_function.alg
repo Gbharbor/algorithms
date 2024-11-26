@@ -1,105 +1,101 @@
 algoritmo "reajuste salarial com funcoes"
 var
-    salario, salariocorrigido : real
-
-// Função para calcular o reajuste baseado no salário atual
+    salario: real
+    salariocorrigido: real
 funcao calcularreajuste(salarioatual: real): real
-    var
-        porcentualreajuste : real
+    var 
+        porcentualreajuste: real
     inicio
-        // Define o percentual de reajuste de acordo com o salário atual
         se (salarioatual <= 1000) entao 
-            porcentualreajuste <- 0.10 // 10%
+            porcentualreajuste <- 0.10// 10%
         senao
-            se (salarioatual > 1000 e salarioatual < 2000) entao
+            se (salarioatual > 1000 e salarioatual < 2000) entao 
                 porcentualreajuste <- 0.08 // 8%
             senao
                 porcentualreajuste <- 0.06 // 6%
             fimse
         fimse
-
-        // Retorna o salário corrigido
         retorne salarioatual * (1 + porcentualreajuste)
-    fimfuncao
-
-// Fluxo principal
+fimfuncao
 inicio
-    // Leitura do salário do funcionário
-    escreva("Digite o salário do funcionário: ")
+    escreva("Salario do funcionario: ")
     leia(salario)
-
-    // Chama a função para calcular o salário corrigido
     salariocorrigido <- calcularreajuste(salario)
-
-    // Exibe o salário corrigido
-    escreval("O salário corrigido do funcionário é: ", salariocorrigido:0:2)
+    escreval("O salario corrigido: ", salariocorrigido:0:2)
 fimalgoritmo
-///////////////////////////////////////////////////////////////////////////////////////////
-algoritmo "reajuste salarial direto no fluxo principal"
+//////////////////////////////////////////////////////////
+algoritmo "reajuste_salarial_direto_no_flux_principal"
 var
-    salario, porcentualreajuste, salariocorrigido: real
-
-// Função para obter o percentual de reajuste com base no salário atual
-funcao obterporcentualreajuste(salarioatual: real): real
-    se salarioatual <= 1000 entao
+    salario: real
+    porcentualreajuste: real
+    salariocorrigido: real
+funcao obterpercentualreajuste(salarioatual: real): real
+    se salarioatual <= 1000 entao 
         retorne 0.10 // 10%
-    senao 
-        se salarioatual > 1000 e salarioatual < 2000 entao
-            retorne 0.08 // 8%
-        senao 
-            retorne 0.06 // 6%
+    senao
+        se salarioatual > 1000 e salarioatual < 2000 entao 
+            retorne 0.08 //8%
+        senao
+            retorne 0.06//6%
         fimse
     fimse
 fimfuncao
-
-// Fluxo principal
-inicio
-    // Leitura do salário do funcionário
-    escreva("Digite o salário do funcionário: ")
+inicio  
+    escreva("digite o salario do funcionario: ")
     leia(salario)
-
-    // Chama a função para obter o percentual de reajuste
-    porcentualreajuste <- obterporcentualreajuste(salario)
-
-    // Calcula o novo salário aplicando o percentual de reajuste
+    porcentualreajuste <- obterpercentualreajuste(salario)
     salariocorrigido <- salario * (1 + porcentualreajuste)
-
-    // Exibe o percentual de reajuste aplicado e o salário corrigido
-    escreval("O percentual de reajuste aplicado foi de: ", (porcentualreajuste * 100):0:2, "%")
-    escreval("O salário corrigido do funcionário é: ", salariocorrigido:0:2)
+    escreval("o porcentual reajuste foi de: ",(porcentualreajuste * 100):0:2, " %")
+    escreval("o salario corrigido: ", salariocorrigido:0:2)
 fimalgoritmo
-
-///////////////////////////////////////////////////////////////////////////////////////////
-algoritmo "verificar maioridade"
+//////////////////////////////////////////////////////////
+algoritmo "verificar_maioridade"
 var
-    nome : caractere
     idade : inteiro
     emaior : logico
-
-// Função para verificar se a pessoa é maior de idade
-funcao emaiordeidade(idadepessoa: inteiro): logico
+funcao emaiordeidade(idadepessoa:inteiro): logico
     se idadepessoa >= 18 entao 
         retorne verdadeiro
     senao
         retorne falso
     fimse
 fimfuncao
-
-// Fluxo principal
 inicio
-    // Leitura do nome e idade da pessoa
-    escreva("Digite o nome da pessoa: ")
-    leia(nome)
-    escreva("Idade: ")
+    escreva("digite a idade: ")
     leia(idade)
-
-    // Chama a função emaiordeidade para verificar se é maior de idade
     emaior <- emaiordeidade(idade)
-
-    // Exibe o resultado com base no valor retornado pela função
-    se emaior entao 
-        escreval(nome, " é maior de idade.")
+    se emaior entao //é com base no retorno da funcao
+        escreval("é maior de idade !")
     senao
-        escreval(nome, " não é maior de idade.")
+        escreval("nao é !")
     fimse
+fimalgoritmo
+//////////////////////////////////////////////////////////
+algoritmo "calcular_cubo"
+var
+    n: inteiro
+    resultado: inteiro
+funcao calc_cubo(numero: inteiro): inteiro
+    inicio 
+        retorne numero * numero * numero
+fimfuncao
+inicio
+    escreva("digite o numero que quer elevar ao cubo: ")
+    leia(n)
+    resultado <- calc_cubo(n)
+    escreval("o cubo de ", n ," é: ", resultado)
+fimalgoritmo
+//////////////////////////////////////////////////////////
+algoritmo "converter_km_para_milhas"
+var
+    km: real
+    milhas: real
+funcao convertomilhas(km: real):real
+    retorne km * 0.62 //km => milhas
+fimfuncao
+inicio
+    escreva("valor em km: ")
+    leia(km)
+    milhas <- convertomilhas(km)
+    escreval(km," equivale a: ",milhas," milhas.")
 fimalgoritmo
