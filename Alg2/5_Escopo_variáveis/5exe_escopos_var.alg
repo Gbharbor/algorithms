@@ -1,4 +1,4 @@
-algoritmo "troca por valor"
+algoritmo "troca_por_valor"
 var 
     num1 : inteiro
     num2 : inteiro 
@@ -20,12 +20,12 @@ inicio
     troca(num1, num2) //chama o procedimento troca.
     escreval("valores apos a chamada do procedimento: num1= ",num1, "e num2= ",num2)//o num1 e num2 n alteram , porque e passagem por valor, so o x e y que alteram entre eles.
 fimalgoritmo
-////////////////////////////////////////////////////
-algoritmo "troca por referencia"
+//==================================================================//
+algoritmo "troca_por_referencia"
 var 
     num1: inteiro
     num2 : inteiro
-procedimento troca (var x: inteiro, var :inteiro) //agora q usamos ref ao usarmos a troca, vai seguir a mesma regra do que esta no bloco, ou seja vao se inverter os valores de num1 e num2, seguindo a logica do bloco do procedimento.
+procedimento troca (var x: inteiro, var y :inteiro) //agora q usamos ref ao usarmos a troca, vai seguir a mesma regra do que esta no bloco, ou seja vao se inverter os valores de num1 e num2, seguindo a logica do bloco do procedimento.
     var
         temp : inteiro 
     inicio 
@@ -42,7 +42,7 @@ inicio
     troca(num1, num2)
     escreval("valores apos a troca por referencia: num1= ",num1, "e num2= ",num2)
 fimalgoritmo
-////////////////////////////////////////////////////
+//==================================================================//
 algoritmo "troca por variaveis globais"
 var 
     num1 : inteiro
@@ -64,7 +64,7 @@ inicio
     troca()
     escreval("valores apos a troca: num1= ", num1,"e num2= ", num2)
 fimalgoritmo
-////////////////////////////////////////////////////
+//==================================================================//
 algoritmo "alternativa para var global(usando parametros)"
 procedimento ADICIONA_DESCONTO(valor:real, total:real) 
     inicio
@@ -78,10 +78,11 @@ inicio
     ADICIONA_DESCONTO(50,total) //desconto de 50(valor:real) e "total" atual como argumento 1000
     escreva ("total final nao alterado pelo procedimento: ", total)//esse total eu to pegando do total global(1000) e nao o total local(que seria 950, ja que foi a ultima operacao que a variavel fez dentro do escopo do procedimento)
 fimalgoritmo
-////////////////////////////////////////////////////
+//==================================================================//
 algoritmo "inverter valores"
 var 
-    a, b : inteiro
+    a:inteiri
+    b : inteiro
 //procedimento para trocar os valores de duas variaveis
 procedimento trocarvalores (var x: inteiro , var y: inteiro)
     var
@@ -102,7 +103,7 @@ inicio
     //chama o procedimento agr para  inverter os valores.
     escreval("valores apos a troca: a=",a," e b= "b)
 fimalgoritmo
-////////////////////////////////////////////////////
+//==================================================================//
 algoritmo "calcularIMC"
 var
     peso: real
@@ -120,7 +121,7 @@ inicio
     calcular_imc(peso, altura)
     escreval("Seu IMC é: ",imc)
 fimalgoritmo
-//////////////////////////////////////////////////////////
+//==================================================================//
 algoritmo "soma_entre_numeros"
 var
     num1: inteiro
