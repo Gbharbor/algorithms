@@ -1,3 +1,82 @@
+algoritmo "Sistema Completo"
+tipo Aluno = registro
+    nome: caractere
+    idade: inteiro
+    notas: vetor[1..3] de real
+    media: real
+    situacao: caractere
+fimregistro
+tipo Cidade = registro
+    nome: caractere
+    populacao: inteiro
+    densidade: real
+fimregistro
+var
+    alunos: vetor[1..5] de Aluno
+    cidades: vetor[1..3] de Cidade
+    i, j: inteiro
+    valortotal: real
+    mediaGeral: real
+inicio
+    // Coletar informações de alunos
+    escreval("Cadastro de Alunos:")
+    para i de 1 ate 5 faca
+        escreva("Nome do aluno ", i, ": ")
+        leia(alunos[i].nome)
+        escreva("Idade do aluno ", alunos[i].nome, ": ")
+        leia(alunos[i].idade)
+        // Coleta das notas
+        para j de 1 ate 3 faca
+            escreva("Digite a nota ", j, " do aluno ", alunos[i].nome, ": ")
+            leia(alunos[i].notas[j])
+        fimpara
+        // Cálculo da média
+        alunos[i].media <- 0
+        para j de 1 ate 3 faca
+            alunos[i].media <- alunos[i].media + alunos[i].notas[j]
+        fimpara
+        alunos[i].media <- alunos[i].media / 3
+        // Determinar situação
+        se alunos[i].media >= 6 ou alunos[i].idade > 30 entao
+            alunos[i].situacao <- "APROVADO"
+        senao
+            alunos[i].situacao <- "REPROVADO"
+        fimse
+    fimpara
+    // Exibir informações de alunos
+    escreval("\nRelatório de Alunos:")
+    para i de 1 ate 5 faca
+        escreval("Aluno: ", alunos[i].nome, " | Idade: ", alunos[i].idade)
+        escreval("Média: ", alunos[i].media:0:2, " | Situação: ", alunos[i].situacao)
+    fimpara
+    // Cadastro de cidades
+    escreval("\nCadastro de Cidades:")
+    para i de 1 ate 3 faca
+        escreva("Digite o nome da cidade ", i, ": ")
+        leia(cidades[i].nome)
+        escreva("Digite a população da cidade ", cidades[i].nome, ": ")
+        leia(cidades[i].populacao)
+        escreva("Digite a densidade demográfica da cidade ", cidades[i].nome, ": ")
+        leia(cidades[i].densidade)
+        se cidades[i].nome = "Curitiba" entao
+            escreval("A cidade cadastrada é a capital do Paraná!")
+        senao
+            escreval("Cidade ", cidades[i].nome, " cadastrada com sucesso.")
+        fimse
+    fimpara
+    // Resumo Geral
+    escreval("\nResumo Geral do Sistema:")
+    escreval("Alunos cadastrados: ", 5)
+    escreval("Cidades cadastradas: ", 3)  
+    mediaGeral <- 0
+    para i de 1 ate 5 faca
+        mediaGeral <- mediaGeral + alunos[i].media
+    fimpara
+    mediaGeral <- mediaGeral / 5
+    escreval("Média geral dos alunos: ", mediaGeral:0:2)
+fimalgoritmo
+
+////////////////////////////////////////////////////////////////////////
 algoritmo "ex complete"
 tipo Aluno = registro
     nome : caractere
